@@ -6,6 +6,7 @@
 ******************************************************************************************/
 import { createStackNavigator } from 'react-navigation-stack'
 import Register from './components/registration'
+import Login from './components/login'
 const AppNavigator = createStackNavigator({
     register: {
         screen: Register,
