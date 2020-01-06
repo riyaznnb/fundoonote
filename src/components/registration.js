@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight,ScrollView } from 'react-native'
 import StyleSheet from '../styleSheets'
 import { userRegister } from '../services/userService'
+
 export default class Register extends Component {
     constructor(props) {
         super(props);
