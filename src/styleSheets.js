@@ -10,7 +10,34 @@ export default StyleSheet.create({
     },
     registerTitle: {
         display: "flex",
-        alignItems: 'center'  
+        alignItems: "center"
+        
+    },
+    fundoonoteTitle: {
+        fontFamily: "Times New Roman",
+        fontWeight: "bold",
+        fontSize: 30
+    },
+    titleF:{
+        color:"#F70741"
+    },
+    titleU:{
+        color:"#AE2D4C"
+    },
+    titleN:{
+        color:"#2DAE50"
+    },
+    titleD:{
+        color:"#2D42AE"
+    },
+    titleO:{
+        color:"#F70741"
+    },
+    titleT:{
+        color:"#A22DAE"
+    },
+    titleE:{
+        color:"#2D8FAE"
     },
     registerContainerInput: {
         borderBottomColor: '#FFFFFF',
@@ -20,9 +47,9 @@ export default StyleSheet.create({
         flexDirection: 'row'
     },
     registerButton: {
-        width: "25%",
-        marginLeft: "39%",
-        marginTop:"4%"
+        // width: "25%",
+        // marginLeft: "39%",
+        // marginTop:"4%"
     },
     loginLink: {
 marginTop:"5%",

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight } from 'react-native'
 import StyleSheet from '../styleSheets'
+import {userRegister} from '../services/userService'
 export default class Register extends Component {
     constructor(props) {
         super(props);
@@ -12,22 +13,40 @@ export default class Register extends Component {
         }
     }
     handleLoginClick = () => {
-        // this.props.navigation.navigate('login')
     }
     //function to handle submit button
     handleSubmit = () => {
-        let data={
+        const data={
             firstName:this.state.firstName,
             lastName:this.state.lastName,
             email:this.state.email,
             password:this.state.password
         }
+        console.warn(data)
+        userRegister(data).then(res => {
+            console.log(res)
+        })
+            .catch(error => {
+            console.log(error)
+        })
     }
     render() {
         return (
             <View style={StyleSheet.registerContainer}>
                 <View style={StyleSheet.registerTitle}>
-                    <Text style={{ marginBottom: 25, color: '#FFA500', fontSize: 20 }}>REGISTRATION</Text>
+                    <Text style={StyleSheet.fundoonoteTitle}>
+                    <Text style={StyleSheet.titleF}>f</Text>
+                    <Text style={StyleSheet.titleU}>u</Text>
+                    <Text style={StyleSheet.titleN}>n</Text>
+                    <Text style={StyleSheet.titleD}>d</Text>
+                    <Text style={StyleSheet.titleO}>o</Text>
+                    <Text style={StyleSheet.titleO}>o</Text>
+                    <Text style={StyleSheet.titleN}>N</Text>
+                    <Text style={StyleSheet.titleO}>o</Text>
+                    <Text style={StyleSheet.titleT}>t</Text>
+                    <Text style={StyleSheet.titleE}>e</Text>
+                    </Text>
+                   
                 </View>
                 <View >
                     <TextInput
@@ -66,7 +85,7 @@ export default class Register extends Component {
                     />
                 </View>
                 <View style={StyleSheet.registerButton}>
-                    <Button title="submit" />
+                    <Button title="Register" />
                 </View>
                 <View style={StyleSheet.loginLink}>
                     <TouchableHighlight onPress={this.handleLoginClick}>
