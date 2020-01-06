@@ -51,8 +51,14 @@ export default StyleSheet.create({
         // marginLeft: "39%",
         // marginTop:"4%"
     },
-    loginLink: {
-marginTop:"5%",
-marginLeft:"20%"
+    link: {
+        marginTop:"5%",
+        marginLeft:"20%"
+    },
+    linkRegister: {
+        // flex: 1,
+        flexDirection:'row',
+        justifyContent:"space-between",
+        marginTop: "5%"
     }
 })

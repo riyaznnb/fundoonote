@@ -10,4 +10,8 @@ export function userRegister(data) {
 export function userLogin(data) {
     console.warn("Data", data);
     return axios.post("http://fundoonotes.incubation.bridgelabz.com/api" + apiConstant.login, data)
+} 
+export function userForgotPassword(data) {
+    console.warn("Data", data);
+    return axios.post("http://fundoonotes.incubation.bridgelabz.com/api" + apiConstant.reset, data)
 }

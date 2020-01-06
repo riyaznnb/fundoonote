@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Button, Text, TouchableHighlight } from 'react-native'
+import { View, TextInput, Button, Text, TouchableHighlight,ScrollView } from 'react-native'
 import StyleSheet from '../styleSheets'
 import { userRegister } from '../services/userService'
 export default class Register extends Component {
@@ -37,6 +37,7 @@ export default class Register extends Component {
     }
     render() {
         return (
+            <ScrollView>
             <View style={StyleSheet.registerContainer}>
                 <View style={StyleSheet.registerTitle}>
                     <Text style={StyleSheet.fundoonoteTitle}>
@@ -50,8 +51,7 @@ export default class Register extends Component {
                     <Text style={StyleSheet.titleO}>o</Text>
                     <Text style={StyleSheet.titleT}>t</Text>
                     <Text style={StyleSheet.titleE}>e</Text>
-                    </Text>
-                   
+                    </Text>     
                 </View>
                 <View >
                     <TextInput
@@ -93,12 +93,13 @@ export default class Register extends Component {
                 <View style={StyleSheet.registerButton}>
                     <Button title="Register" onPress={this.handleSubmit}/>
                 </View>
-                <View style={StyleSheet.loginLink}>
+                <View style={StyleSheet.link}>
                     <TouchableHighlight onPress={this.handleLoginClick}>
                         <Text>Already have an account?  Login</Text>
                     </TouchableHighlight>
                 </View>
-            </View>
+                </View>
+                </ScrollView>
         )
         // return (
         //   <View style={StyleSheet.registrationContainer}>

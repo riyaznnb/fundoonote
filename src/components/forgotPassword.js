@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
-import { View, TextInput, Button, Text, TouchableHighlight,ScrollView } from 'react-native'
+import { View, TextInput, Button, Text, TouchableHighlight,ScrollView} from 'react-native'
 import StyleSheet from '../styleSheets'
-import { userLogin} from '../services/userService'
-export default class Login extends Component {
+import { userForgotPassword} from '../services/userService'
+export default class ForgotPassword extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            password: ''
+            email: ''
         }
     }
     handleRegisterClick = () => {
          this.props.navigation.navigate('register')
     }
-    handleForgotPasswordClick = () => {
-        this.props.navigation.navigate('forgotPassword') 
+    handleLoginClick = () => {
+        this.props.navigation.navigate('login')
     }
-    handleLogin = () => {
+    handleForgotPassword = () => {
         const data={
-            email:this.state.email,
-            password:this.state.password
+            email:this.state.email
         }
-        userLogin(data).then(res => {
-            console.warn('login success',res)
+        userForgotPassword(data).then(res => {
+            console.warn('Email sent success',res)
         })
             .catch(error => {
             console.warn('error',error.message);
@@ -56,18 +54,8 @@ export default class Login extends Component {
                         onChangeText={(email) => this.setState({ email })}
                     />
                 </View>
-                <View >
-                    <TextInput
-                    style={StyleSheet.registerContainerInput}
-                        placeholder="Password"
-                        secureTextEntry={true}
-                        underlineColorAndroid='transparent'
-                        value={this.state.password}
-                        onChangeText={(password) => this.setState({ password })}
-                    />
-                </View>
                 <View style={StyleSheet.registerButton}>
-                    <Button title="Login" onPress={this.handleLogin}/>
+                    <Button title="Send Reset Email" onPress={this.handleForgotPassword}/>
                 </View>
                 <View style={StyleSheet.linkRegister}>
                     <View>
@@ -76,8 +64,8 @@ export default class Login extends Component {
                     </TouchableHighlight>
                     </View>
                     <View>
-                    <TouchableHighlight onPress={this.handleForgotPasswordClick}>
-                        <Text>Forgot Password</Text>
+                    <TouchableHighlight onPress={this.handleLoginClick}>
+                        <Text>Login</Text>
                     </TouchableHighlight>
                     </View>
                 </View>
