@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight } from 'react-native'
 import StyleSheet from '../styleSheets'
+import { userLogin} from '../services/userService'
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -9,15 +10,21 @@ export default class Login extends Component {
             password: ''
         }
     }
-    handleLoginClick = () => {
-        // this.props.navigation.navigate('login')
+    handleRegisterClick = () => {
+         this.props.navigation.navigate('register')
     }
-    //function to handle submit button
-    handleSubmit = () => {
-        let data={
+    handleLogin = () => {
+        const data={
             email:this.state.email,
             password:this.state.password
         }
+        userLogin(data).then(res => {
+            console.warn('login success',res)
+        })
+            .catch(error => {
+            console.warn('error',error.message);
+        })
+
     }
     render() {
         return (
@@ -38,17 +45,18 @@ export default class Login extends Component {
                     <TextInput
                     style={StyleSheet.registerContainerInput}
                         placeholder="Password"
+                        secureTextEntry={true}
                         underlineColorAndroid='transparent'
                         value={this.state.password}
                         onChangeText={(password) => this.setState({ password })}
                     />
                 </View>
                 <View style={StyleSheet.registerButton}>
-                    <Button title="Login" />
+                    <Button title="Login" onPress={this.handleLogin}/>
                 </View>
                 <View style={StyleSheet.loginLink}>
-                    <TouchableHighlight onPress={this.handleLoginClick}>
-                        <Text>Not an account?  Register</Text>
+                    <TouchableHighlight onPress={this.handleRegisterClick}>
+                        <Text>New User?  Register</Text>
                     </TouchableHighlight>
                 </View>
             </View>

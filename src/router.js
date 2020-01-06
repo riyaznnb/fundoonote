@@ -14,6 +14,12 @@ const AppNavigator = createStackNavigator({
             header: null
         }
     },
+    login: {
+        screen: Login,
+        navigationOptions: {
+        header: null
+        }
+        },
 },
     {
         initialRouteName: "register",

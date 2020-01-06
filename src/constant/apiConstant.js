@@ -1,3 +1,4 @@
 export const apiConstant = {
-    signUp: "/user/userSignUp"
+    signUp: "/user/userSignUp",
+    login:"/user/login"
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight } from 'react-native'
 import StyleSheet from '../styleSheets'
-import {userRegister} from '../services/userService'
+import { userRegister } from '../services/userService'
 export default class Register extends Component {
     constructor(props) {
         super(props);
@@ -13,6 +13,7 @@ export default class Register extends Component {
         }
     }
     handleLoginClick = () => {
+        this.props.navigation.navigate('login')
     }
     //function to handle submit button
     handleSubmit = () => {
@@ -20,14 +21,18 @@ export default class Register extends Component {
             firstName:this.state.firstName,
             lastName:this.state.lastName,
             email:this.state.email,
-            password:this.state.password
+            password: this.state.password,
+            service:"basic"
         }
-        console.warn(data)
+        console.warn('register data',data)
         userRegister(data).then(res => {
-            console.log(res)
+            console.warn('success')
+            console.warn("result", res)
+            this.props.navigation.navigate('login')
+            
         })
             .catch(error => {
-            console.log(error)
+                console.warn("error", error.message)
         })
     }
     render() {
@@ -77,7 +82,8 @@ export default class Register extends Component {
                 </View>
                 <View >
                     <TextInput
-                    style={StyleSheet.registerContainerInput}
+                        style={StyleSheet.registerContainerInput}
+                        secureTextEntry={true}
                         placeholder="Password"
                         underlineColorAndroid='transparent'
                         value={this.state.password}
@@ -85,7 +91,7 @@ export default class Register extends Component {
                     />
                 </View>
                 <View style={StyleSheet.registerButton}>
-                    <Button title="Register" />
+                    <Button title="Register" onPress={this.handleSubmit}/>
                 </View>
                 <View style={StyleSheet.loginLink}>
                     <TouchableHighlight onPress={this.handleLoginClick}>
