@@ -3,12 +3,18 @@ import { View, Text, TouchableOpacity, TextInput,Image } from 'react-native'
 import StyleSheet from '../../styleSheets'
 import { Card, Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Feather'
-import Icons from 'react-native-vector-icons/MaterialIcons'
+import Icons from 'react-native-vector-icons/AntDesign'
+import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
+import IconMaterial from 'react-native-vector-icons/MaterialIcons'
 export default class CreateNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            pinned: false
         }
+    }
+    handlePinned = () => {
+        this.setState({pinned:!this.state.pinned})
     }
 
     render() {
@@ -19,25 +25,28 @@ export default class CreateNote extends Component {
                             <View>
                                 <View style={StyleSheet.createNoteItem}>
                                     <TouchableOpacity>
-                                        <Icon name="arrow-left" size={30} />
+                                        <Icon name="arrow-left" size={30} color="black"/>
                                     </TouchableOpacity>
                                 </View>
                             </View>
                             <View style={StyleSheet.createNoteHeaderRight}>
                                 <View style={StyleSheet.createNoteItem}>
-                                <TouchableOpacity>
-                                <Image source={require('../assets/grid.png')}/>
-                                        <Icon name="arrow-left" size={30} />
+                                <TouchableOpacity onPress={this.handlePinned}>
+                                    {!this.state.pinned ?
+                                        <Icons name="pushpino" size={30} color="black"/>
+                                        :
+                                        <Icons name="pushpin" size={30} color="black"/>
+                                    }
                                     </TouchableOpacity>
                                 </View>
                                 <View style={StyleSheet.createNoteItem}>
                                     <TouchableOpacity>
-                                        <Icon name="arrow-left" size={30} />
+                                        <IconM name="bell-plus" size={30} color="black"/>
                                     </TouchableOpacity>
                                 </View>
                                 <View style={StyleSheet.createNoteItem}>
                                     <TouchableOpacity>
-                                        <Icon name="arrow-left" size={30} />
+                                        <IconMaterial name="archive" size={30} color="black"/>
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -45,10 +54,13 @@ export default class CreateNote extends Component {
                     <View style={StyleSheet.createNoteInput}>
                         <View style={StyleSheet.createNoteItem}>
                             <TextInput
+                                 style={StyleSheet.createNoteTitle}
                                 placeholder="Title" />
                         </View>
                         <View style={StyleSheet.createNoteItem}>
                             <TextInput
+                                style={StyleSheet.createNoteNote}
+                                multiline={true}
                                 placeholder="Note" />
                         </View>
                     </View>
@@ -56,12 +68,12 @@ export default class CreateNote extends Component {
             <View style={StyleSheet.createNoteFooter}>
                 <View style={StyleSheet.createNoteItem}>
                     <TouchableOpacity>
-                        <Icon name="arrow-left" size={30} />
+                        <Icon name="plus-square" size={30} color="black"/>
                     </TouchableOpacity>
                 </View>
                 <View style={StyleSheet.createNoteItem}>
                     <TouchableOpacity>
-                        <Icon name="arrow-left" size={30} />
+                        <Icon name="more-vertical" size={30} color="black"/>
                     </TouchableOpacity>
                 </View>
             </View>

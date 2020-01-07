@@ -142,6 +142,12 @@ export default StyleSheet.create({
         // marginBottom:10
         margin:10
         
-    }
+    },
+    createNoteTitle: {
+        fontSize:28
+    },
+    createNoteNote: {
+        fontSize: 20,
+    },
     
 })
