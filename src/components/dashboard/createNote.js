@@ -4,7 +4,7 @@ import StyleSheet from '../../styleSheets'
 import { Card, Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Feather'
 import Icons from 'react-native-vector-icons/MaterialIcons'
-export default class Dashboard extends Component {
+export default class CreateNote extends Component {
     constructor(props) {
         super(props);
         this.state = {

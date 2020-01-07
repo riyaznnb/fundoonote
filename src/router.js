@@ -9,6 +9,7 @@ import Register from './components/registration'
 import Login from './components/login'
 import ForgotPassword from './components/forgotPassword';
 import Dashboard from './components/dashboard/dashboard'
+import CreateNote from './components/dashboard/createNote';
 const AppNavigator = createStackNavigator({
     register: {
         screen: Register,
@@ -34,7 +35,14 @@ const AppNavigator = createStackNavigator({
         header: null
         }   
     },
+    createNote: {
+        screen: CreateNote,
+        navigationOptions: {
+            header: null
+            }  
+    }
  },
+ 
     
     {
         initialRouteName: "dashboard",
