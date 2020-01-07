@@ -109,30 +109,39 @@ export default StyleSheet.create({
         backgroundColor: "#fff",
         bottom: "46%",
         right: "30%"
+    },
+    // CreateNote style
+    createNoteContainer: {
+        flex:1,
+        flexDirection: "column",
+        justifyContent:"space-between"
+    },
+    createNoteHeaderInput: {
+        flexDirection: "column",
+        justifyContent:"space-between"
+    },
+    createNoteHeader: {
+        flexDirection: "row",
+        justifyContent:"space-between"
+    },
+    createNoteHeaderRight: {
+        flexDirection: "row",
+        justifyContent:"space-between"
+    },
+    createNoteInput: {
+        flexDirection: "column"
+    },
+    createNoteFooter: {
+        flexDirection: "row",
+        justifyContent:"space-between"
+    },
+    createNoteItem: {
+        // marginLeft: 10,
+        // marginTop: 10,
+        // marginRight: 10,
+        // marginBottom:10
+        margin:10
+        
     }
     
 })
-
-// bottomIcons: {
-//     width: "50%",
-//     flexDirection: "row",
-//     margin: 15,
-//     justifyContent: "space-between"
-//   },
-//   createIcon: {
-//     flexDirection: "row",
-//     marginTop: -35,
-//     marginRight: 35
-//   },
-//   plusIcon: {
-//     marginRight: 40,
-//     elevation: 8,
-//     borderRadius: 100,
-//     backgroundColor: "#fff",
-//     width: 65,
-//     height: 65,
-//     bottom: 30
-//     // left:250,
-//     // marginTop:-55,
-//     // position:"absolute"
-//   },
