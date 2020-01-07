@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
     registerContainer: {
-        margin: "10%",
+        margin: "1%",
         shadowColor: '#FFFFFF',
         shadowOffset: { width: 1, height: 4 },
         shadowOpacity: 0.8,
@@ -10,13 +10,15 @@ export default StyleSheet.create({
     },
     registerTitle: {
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        marginBottom: "5%",
+        marginTop:"10%"
         
     },
     fundoonoteTitle: {
         fontFamily: "Times New Roman",
         fontWeight: "bold",
-        fontSize: 30
+        fontSize: 35
     },
     titleF:{
         color:"#F70741"
@@ -60,5 +62,77 @@ export default StyleSheet.create({
         flexDirection:'row',
         justifyContent:"space-between",
         marginTop: "5%"
+    },
+
+    headerCard: {
+        height: 50,
+        borderRadius: 20
+    },
+    headerLeft: {
+        flexDirection: "row", 
+        justifyContent: "space-between",
+    },
+    headerRight: {
+        flexDirection: "row", 
+        justifyContent: "space-between"
+    },
+    header: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    headerItem: {
+        marginTop: -8,
+        marginLeft:10
+    },
+    fundoonoteTitleInHeader: {
+        fontFamily: "Times New Roman",
+        fontWeight: "bold",
+        fontSize: 25,
+    },
+    headerFooter: {
+        flex:1,
+        flexDirection: "column",
+        justifyContent:"space-between"
+    },
+    footer: {
+        backgroundColor: "white",
+        height: 50,
+    },
+    footerItem: {
+        marginLeft: 10,
+        marginRight:10,
+        marginTop:5
+    },
+    addIcon: {
+        elevation: 8,
+        borderRadius: 100,
+        backgroundColor: "#fff",
+        bottom: "46%",
+        right: "30%"
     }
+    
 })
+
+// bottomIcons: {
+//     width: "50%",
+//     flexDirection: "row",
+//     margin: 15,
+//     justifyContent: "space-between"
+//   },
+//   createIcon: {
+//     flexDirection: "row",
+//     marginTop: -35,
+//     marginRight: 35
+//   },
+//   plusIcon: {
+//     marginRight: 40,
+//     elevation: 8,
+//     borderRadius: 100,
+//     backgroundColor: "#fff",
+//     width: 65,
+//     height: 65,
+//     bottom: 30
+//     // left:250,
+//     // marginTop:-55,
+//     // position:"absolute"
+//   },

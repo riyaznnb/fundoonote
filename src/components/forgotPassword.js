@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight,ScrollView} from 'react-native'
 import StyleSheet from '../styleSheets'
+import { Card } from 'react-native-elements'
 import { userForgotPassword} from '../services/userService'
 export default class ForgotPassword extends Component {
     constructor(props) {
@@ -30,7 +31,6 @@ export default class ForgotPassword extends Component {
     render() {
         return (
             <ScrollView>
-            <View style={StyleSheet.registerContainer}>
                 <View style={StyleSheet.registerTitle}>
                     <Text style={StyleSheet.fundoonoteTitle}>
                     <Text style={StyleSheet.titleF}>f</Text>
@@ -45,6 +45,8 @@ export default class ForgotPassword extends Component {
                     <Text style={StyleSheet.titleE}>e</Text>
                     </Text>
                 </View>
+                <View style={StyleSheet.registerContainer}>
+                    <Card>
                 <View >
                     <TextInput
                     style={StyleSheet.registerContainerInput}
@@ -68,7 +70,8 @@ export default class ForgotPassword extends Component {
                         <Text>Login</Text>
                     </TouchableHighlight>
                     </View>
-                </View>
+                        </View>
+                        </Card>
                 </View>
                 </ScrollView>
         )

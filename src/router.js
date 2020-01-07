@@ -8,6 +8,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import Register from './components/registration'
 import Login from './components/login'
 import ForgotPassword from './components/forgotPassword';
+import Dashboard from './components/dashboard/dashboard'
 const AppNavigator = createStackNavigator({
     register: {
         screen: Register,
@@ -26,10 +27,16 @@ const AppNavigator = createStackNavigator({
         navigationOptions: {
         header: null
         }
-        },
-},
+    },
+    dashboard: {
+        screen: Dashboard,
+        navigationOptions: {
+        header: null
+        }   
+    },
+ },
     
     {
-        initialRouteName: "register",
+        initialRouteName: "dashboard",
     });
 export default AppNavigator;
