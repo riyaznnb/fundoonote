@@ -6,12 +6,15 @@ import Icon from 'react-native-vector-icons/Feather'
 import Icons from 'react-native-vector-icons/AntDesign'
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconMaterial from 'react-native-vector-icons/MaterialIcons'
+import { addNote } from '../../services/userService';
 export default class CreateNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
             pinned: false,
-            reminderOpen:false
+            reminderOpen: false,
+            title: '',
+            description:''
         }
     }
     handlePinned = () => {
@@ -23,6 +26,21 @@ export default class CreateNote extends Component {
     reminderModalClose = () => {
         this.setState({reminderOpen:false})
     }
+    navigateDashboard = () => {
+        const data = {
+            title: this.state.title,
+            description: this.state.description,
+            isPined:this.state.pinned
+        }
+        addNote(data).then(res => {
+            console.warn("addnote result", res)
+            this.props.navigation.navigate('dashboard')
+        })
+            .catch(error => {
+            console.warn("error in addnote",error.message)
+        })
+        
+    }
 
     render() {
         return (
@@ -31,7 +49,7 @@ export default class CreateNote extends Component {
                     <View style={StyleSheet.createNoteHeader}>
                         <View>
                             <View style={StyleSheet.createNoteItem}>
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={this.navigateDashboard}>
                                     <Icon name="arrow-left" size={30} color="black" />
                                 </TouchableOpacity>
                             </View>
@@ -63,13 +81,17 @@ export default class CreateNote extends Component {
                         <View style={StyleSheet.createNoteItem}>
                             <TextInput
                                 style={StyleSheet.createNoteTitle}
-                                placeholder="Title" />
+                                placeholder="Title"
+                                value={this.state.title}
+                                onChangeText={(title) => this.setState({ title })}/>
                         </View>
                         <View style={StyleSheet.createNoteItem}>
                             <TextInput
                                 style={StyleSheet.createNoteNote}
                                 multiline={true}
-                                placeholder="Note" />
+                                placeholder="Note"
+                                value={this.state.description}
+                                onChangeText={(description) => this.setState({ description })}/>
                         </View>
                     </View>
                 </View>

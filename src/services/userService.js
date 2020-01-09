@@ -1,6 +1,7 @@
 import axios from 'react-native-axios'
 import Config from "react-native-config";
 import {apiConstant} from "../constant/apiConstant"
+import { AsyncStorage } from 'react-native';
 
 export function userRegister(data) {
     console.warn("Data", data);
@@ -14,4 +15,14 @@ export function userLogin(data) {
 export function userForgotPassword(data) {
     console.warn("Data", data);
     return axios.post("http://fundoonotes.incubation.bridgelabz.com/api" + apiConstant.reset, data)
+}
+export async function addNote(data) {
+    console.warn("Data", data);
+    let token = await AsyncStorage.getItem('token');
+    console.warn('token in service',token)
+    return axios.post("http://fundoonotes.incubation.bridgelabz.com/api" + apiConstant.addNote, data, {
+        headers: {
+            Authorization:token
+        }
+    })
 }

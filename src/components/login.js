@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, TextInput, Button, Text, TouchableHighlight,ScrollView } from 'react-native'
+import { View, TextInput, Button, Text, TouchableHighlight,ScrollView,AsyncStorage } from 'react-native'
 import StyleSheet from '../styleSheets'
 import { Card } from 'react-native-elements'
-import { userLogin} from '../services/userService'
+import { userLogin } from '../services/userService'
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -22,8 +22,13 @@ export default class Login extends Component {
             email:this.state.email,
             password:this.state.password
         }
-        userLogin(data).then(res => {
-            console.warn('login success',res)
+        userLogin(data).then(res=> {
+            console.warn('login success', res.data.id)
+            let token = JSON.stringify(res.data.id)
+            AsyncStorage.setItem("token", token)
+            //let tok=await AsyncStorage.getItem("token")
+            //console.warn("token", tok)
+            this.props.navigation.navigate('dashboard')
         })
             .catch(error => {
             console.warn('error',error.message);
