@@ -28,7 +28,8 @@ export async function addNote(data) {
 }
 export async function getNote() {
     let token = await AsyncStorage.getItem('token');
-    console.warn('token in service',token)
+    console.warn('token in service', token)
+    console.log(token)
     return axios.get("http://fundoonotes.incubation.bridgelabz.com/api" + apiConstant.getNotes, {
         headers: {
             Authorization:token

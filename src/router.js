@@ -10,6 +10,7 @@ import Login from './components/login'
 import ForgotPassword from './components/forgotPassword';
 import Dashboard from './components/dashboard/dashboard'
 import CreateNote from './components/dashboard/createNote';
+import Reminder from './components/dashboard/reminder';
 const AppNavigator = createStackNavigator({
     register: {
         screen: Register,
@@ -40,11 +41,17 @@ const AppNavigator = createStackNavigator({
         navigationOptions: {
             header: null
             }  
+    },
+    reminder: {
+        screen: Reminder,
+        navigationOptions: {
+            header: null
+            }  
     }
  },
  
     
     {
-        initialRouteName: "dashboard",
+        initialRouteName: "reminder",
     });
 export default AppNavigator;
