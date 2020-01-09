@@ -21,10 +21,10 @@ export default class GetNote extends Component {
         return (
             <Card containerStyle={styleSheets.getNoteCard}>
                 <View>
-                    <Text>{this.props.title} sdsghdd</Text>
+                    <Text>{this.props.title}</Text>
                 </View>
                 <View>
-                    <Text>{this.props.description} dfdfd</Text>
+                    <Text>{this.props.description}</Text>
                 </View>
             </Card>
         )
