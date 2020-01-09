@@ -78,15 +78,11 @@ export default class Reminder extends Component {
                             <View>
                                 <Picker
                                     selectedValue={this.state.date}
-                                    // style={{ height: 50, width: 100 }}
-                                    // onValueChange={(itemValue, itemIndex) =>
-                                    //     this.setState({ date: itemValue })
-                                // }
-                                >
-                                    <Picker.Item label="Today" onPress={this.handleTodayDate} />
+                                    onValueChange={this.showDatePicker}>
+                                    {/* <Picker.Item label="Today" onPress={this.handleTodayDate} />
                                     <Picker.Item label="Tomorrow" onPress={this.handleTomorrowDate} />
-                                    <Picker.Item label="Next Week" onPress={this.handleNextWeekDate} />
-                                    <Picker.Item label="Select a date..." onPress={this.showDatePicker}/>
+                                    <Picker.Item label="Next Week" onPress={this.handleNextWeekDate} /> */}
+                                    <Picker.Item label="Select a date..."/>
                                 </Picker>
                             </View>
                             <Divider/>
