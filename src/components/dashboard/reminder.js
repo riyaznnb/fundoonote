@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, View, Text, TouchableOpacity,Picker} from "react-native";
+import { Button, View, Text, TouchableOpacity, Picker } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import { Tooltip, Divider } from "react-native-elements";
 import Icon4 from "react-native-vector-icons/FontAwesome";
@@ -16,11 +16,13 @@ export default class Reminder extends Component {
             selectedMinutes: 0,
             openTime: false,
             date: '7-01-20',
-            time:''
+            time: ''
         };
     }
     showDatePicker = () => {
         this.setState({ isDatePickerVisible: true });
+        console.warn('date');
+
     };
     showTimePicker = () => {
         this.setState({ isTimePickerVisible: true });
@@ -43,11 +45,11 @@ export default class Reminder extends Component {
         console.log('today');
     }
     handleTomorrowDate = () => {
-        console.log('tomorrow');   
+        console.log('tomorrow');
     }
     handleNextWeekDate = () => {
         console.log('next week');
-        
+
     }
     render() {
         return (
@@ -75,41 +77,57 @@ export default class Reminder extends Component {
                             <View >
                                 <Text style={StyleSheet.reminderTitle}>Add Reminder</Text>
                             </View>
-                            <View>
+                            <View onPress={this.showDatePicker}>
+                                {/* <TouchableOpacity>
+                                    <Icon4
+                                        name="plus-square"
+                                        size={40}
+                                        onPress={() => {
+                                            this.setState({ isDatePickerVisible: true });
+                                        }}
+                                    />
+                                </TouchableOpacity> */}
                                 <Picker
                                     selectedValue={this.state.date}
-                                    onValueChange={this.showDatePicker}>
-                                    {/* <Picker.Item label="Today" onPress={this.handleTodayDate} />
+                                    onValueChange={() => {
+                                        this.setState({ isDatePickerVisible: true });
+                                    }}>
+                                    <Picker.Item label="Today" onPress={this.handleTodayDate} />
                                     <Picker.Item label="Tomorrow" onPress={this.handleTomorrowDate} />
-                                    <Picker.Item label="Next Week" onPress={this.handleNextWeekDate} /> */}
-                                    <Picker.Item label="Select a date..."/>
+                                    <Picker.Item label="Next Week" onPress={this.handleNextWeekDate} />
+                                    <Picker.Item label="Select a date..." />
                                 </Picker>
                             </View>
-                            <Divider/>
+                            <Divider />
                             <View>
-                            <Picker
-                                    selectedValue={this.state.time}>
-                                    <Picker.Item label="Select a Time..." onPress={this.showTimePicker}/>
+                                <Picker
+                                    selectedValue={this.state.time}
+                                    onValueChange={() => {
+                                        this.setState({ isTimePickerVisible: true });
+                                    }}>
+                                    <Picker.Item label="Today" onPress={this.handleTodayDate} />
+                                    <Picker.Item label="Tomorrow" onPress={this.handleTomorrowDate} />
+                                    <Picker.Item label="Select a Time..." onPress={this.showTimePicker} />
                                 </Picker>
                             </View>
-                            <Divider/>
+                            <Divider />
                             <View style={StyleSheet.reminderButton}>
-                                <View style={{margin:5}}>
+                                <View style={{ margin: 5 }}>
                                     <Button title="Cancel" />
                                 </View>
-                                <View style={{margin:5}}>
-                                <Button title="Save"/>
+                                <View style={{ margin: 5 }}>
+                                    <Button title="Save" />
                                 </View>
                             </View>
                             <DateTimePicker
-                            isVisible={this.state.isDatePickerVisible}
-                            onConfirm={this.handleDatePicked}
-                            onCancel={this.hideDatePicker}/>
+                                isVisible={this.state.isDatePickerVisible}
+                                onConfirm={this.handleDatePicked}
+                                onCancel={this.hideDatePicker} />
                             <DateTimePicker
-                            isVisible={this.state.isTimePickerVisible}
-                            onConfirm={this.handleTimePicked}
-                            onCancel={this.hideTimePicker}
-                            mode="time" />
+                                isVisible={this.state.isTimePickerVisible}
+                                onConfirm={this.handleTimePicked}
+                                onCancel={this.hideTimePicker}
+                                mode="time" />
                         </View>
                     </DialogContent>
                 </Dialog>
