@@ -45,6 +45,6 @@ const AppNavigator = createStackNavigator({
  
     
     {
-        initialRouteName: "login",
+        initialRouteName: "dashboard",
     });
 export default AppNavigator;

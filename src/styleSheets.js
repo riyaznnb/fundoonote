@@ -94,6 +94,9 @@ export default StyleSheet.create({
         flexDirection: "column",
         justifyContent:"space-between"
     },
+    headerAndNotes: {
+        flexDirection: "column",
+    },
     footer: {
         backgroundColor: "white",
         height: 50,
@@ -136,10 +139,6 @@ export default StyleSheet.create({
         justifyContent:"space-between"
     },
     createNoteItem: {
-        // marginLeft: 10,
-        // marginTop: 10,
-        // marginRight: 10,
-        // marginBottom:10
         margin:10
         
     },
@@ -148,6 +147,12 @@ export default StyleSheet.create({
     },
     createNoteNote: {
         fontSize: 20,
+    },
+    getNoteCard: {
+        flexDirection: "column",
+        justifyContent: "space-between",
+        borderRadius: 20,
+        width:"50%"
     },
     
 })

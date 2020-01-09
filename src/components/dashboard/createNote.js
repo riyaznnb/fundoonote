@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, Image,Modal,TouchableHighlight } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Image,Modal,TouchableHighlight, ScrollView } from 'react-native'
 import StyleSheet from '../../styleSheets'
 import { Card, Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Feather'
@@ -45,6 +45,7 @@ export default class CreateNote extends Component {
     render() {
         return (
             <View style={StyleSheet.createNoteContainer}>
+                <ScrollView>
                 <View style={StyleSheet.createNoteHeaderInput}>
                     <View style={StyleSheet.createNoteHeader}>
                         <View>
@@ -94,7 +95,8 @@ export default class CreateNote extends Component {
                                 onChangeText={(description) => this.setState({ description })}/>
                         </View>
                     </View>
-                </View>
+                    </View>
+                    </ScrollView>
                 <View style={StyleSheet.createNoteFooter}>
                     <View style={StyleSheet.createNoteItem}>
                         <TouchableOpacity>

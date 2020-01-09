@@ -24,8 +24,7 @@ export default class Login extends Component {
         }
         userLogin(data).then(res=> {
             console.warn('login success', res.data.id)
-            let token = JSON.stringify(res.data.id)
-            AsyncStorage.setItem("token", token)
+            AsyncStorage.setItem("token", res.data.id)
             //let tok=await AsyncStorage.getItem("token")
             //console.warn("token", tok)
             this.props.navigation.navigate('dashboard')
