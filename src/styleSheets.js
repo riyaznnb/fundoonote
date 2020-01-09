@@ -151,8 +151,11 @@ export default StyleSheet.create({
     getNoteCard: {
         flexDirection: "column",
         justifyContent: "space-between",
-        borderRadius: 20,
-        width:"50%"
+        borderRadius: 10,
     },
-    
+    noteArea: {
+        // alignSelf:"flex-start",
+        // flexDirection: "row",
+        // flexWrap:"nowrap",
+    },
 })

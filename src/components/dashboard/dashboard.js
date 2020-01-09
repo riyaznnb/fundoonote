@@ -36,11 +36,12 @@ export default class Dashboard extends Component {
 
     render() {
         let notes = this.state.notes.map(item => {
+            return(
             <GetNote
                 title={item.title}
                 description={item.description}
                 isPined={item.isPined}/>
-        })
+         ) })
         return (
             <View style={StyleSheet.headerFooter}>
                 <View style={StyleSheet.headerAndNotes}>
@@ -91,8 +92,8 @@ export default class Dashboard extends Component {
                             </View>
                         </View>
                     </Card>
-                    <View>
-                   {notes}
+                    <View style={StyleSheet.noteArea}>
+                    {notes}
                     </View>
                 </View>
                 <View>

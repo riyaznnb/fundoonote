@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, Image,Modal,TouchableHighlight, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Image, Modal, TouchableHighlight, ScrollView } from 'react-native'
 import StyleSheet from '../../styleSheets'
 import { Card, Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Feather'
@@ -14,98 +14,102 @@ export default class CreateNote extends Component {
             pinned: false,
             reminderOpen: false,
             title: '',
-            description:''
+            description: ''
         }
     }
     handlePinned = () => {
         this.setState({ pinned: !this.state.pinned })
     }
     reminderModalOpen = () => {
-        this.setState({reminderOpen:true})
+        this.setState({ reminderOpen: true })
     }
     reminderModalClose = () => {
-        this.setState({reminderOpen:false})
+        this.setState({ reminderOpen: false })
     }
     navigateDashboard = () => {
-        const data = {
-            title: this.state.title,
-            description: this.state.description,
-            isPined:this.state.pinned
-        }
-        addNote(data).then(res => {
-            console.warn("addnote result", res)
+        if (this.state.title === '' && this.state.description === '') {
             this.props.navigation.navigate('dashboard')
-        })
-            .catch(error => {
-            console.warn("error in addnote",error.message)
-        })
-        
+        }
+        else {
+            const data = {
+                title: this.state.title,
+                description: this.state.description,
+                isPined: this.state.pinned
+            }
+            addNote(data).then(res => {
+                console.warn("addnote result", res)
+                this.props.navigation.navigate('dashboard')
+            })
+                .catch(error => {
+                    console.warn("error in addnote", error.message)
+                })
+        }
     }
 
     render() {
         return (
             <View style={StyleSheet.createNoteContainer}>
                 <ScrollView>
-                <View style={StyleSheet.createNoteHeaderInput}>
-                    <View style={StyleSheet.createNoteHeader}>
-                        <View>
-                            <View style={StyleSheet.createNoteItem}>
-                                <TouchableOpacity onPress={this.navigateDashboard}>
-                                    <Icon name="arrow-left" size={30} color="black" />
-                                </TouchableOpacity>
+                    <View style={StyleSheet.createNoteHeaderInput}>
+                        <View style={StyleSheet.createNoteHeader}>
+                            <View>
+                                <View style={StyleSheet.createNoteItem}>
+                                    <TouchableOpacity onPress={this.navigateDashboard}>
+                                        <Icon name="arrow-left" size={26} color="black" />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                            <View style={StyleSheet.createNoteHeaderRight}>
+                                <View style={StyleSheet.createNoteItem}>
+                                    <TouchableOpacity onPress={this.handlePinned}>
+                                        {!this.state.pinned ?
+                                            <Icons name="pushpino" size={26} color="black" />
+                                            :
+                                            <Icons name="pushpin" size={26} color="black" />
+                                        }
+                                    </TouchableOpacity>
+                                </View>
+                                <View style={StyleSheet.createNoteItem}>
+                                    <TouchableOpacity onPress={this.reminderModalOpen}>
+                                        <IconM name="bell-plus" size={26} color="black" />
+                                    </TouchableOpacity>
+                                </View>
+                                <View style={StyleSheet.createNoteItem}>
+                                    <TouchableOpacity>
+                                        <IconMaterial name="archive" size={26} color="black" />
+                                    </TouchableOpacity>
+                                </View>
+
                             </View>
                         </View>
-                        <View style={StyleSheet.createNoteHeaderRight}>
+                        <View style={StyleSheet.createNoteInput}>
                             <View style={StyleSheet.createNoteItem}>
-                                <TouchableOpacity onPress={this.handlePinned}>
-                                    {!this.state.pinned ?
-                                        <Icons name="pushpino" size={30} color="black" />
-                                        :
-                                        <Icons name="pushpin" size={30} color="black" />
-                                    }
-                                </TouchableOpacity>
+                                <TextInput
+                                    style={StyleSheet.createNoteTitle}
+                                    placeholder="Title"
+                                    value={this.state.title}
+                                    onChangeText={(title) => this.setState({ title })} />
                             </View>
                             <View style={StyleSheet.createNoteItem}>
-                                <TouchableOpacity onPress={this.reminderModalOpen}>
-                                    <IconM name="bell-plus" size={30} color="black" />
-                                </TouchableOpacity>
+                                <TextInput
+                                    style={StyleSheet.createNoteNote}
+                                    multiline={true}
+                                    placeholder="Note"
+                                    value={this.state.description}
+                                    onChangeText={(description) => this.setState({ description })} />
                             </View>
-                            <View style={StyleSheet.createNoteItem}>
-                                <TouchableOpacity>
-                                    <IconMaterial name="archive" size={30} color="black" />
-                                </TouchableOpacity>
-                            </View>
-                            
                         </View>
                     </View>
-                    <View style={StyleSheet.createNoteInput}>
-                        <View style={StyleSheet.createNoteItem}>
-                            <TextInput
-                                style={StyleSheet.createNoteTitle}
-                                placeholder="Title"
-                                value={this.state.title}
-                                onChangeText={(title) => this.setState({ title })}/>
-                        </View>
-                        <View style={StyleSheet.createNoteItem}>
-                            <TextInput
-                                style={StyleSheet.createNoteNote}
-                                multiline={true}
-                                placeholder="Note"
-                                value={this.state.description}
-                                onChangeText={(description) => this.setState({ description })}/>
-                        </View>
-                    </View>
-                    </View>
-                    </ScrollView>
+                </ScrollView>
                 <View style={StyleSheet.createNoteFooter}>
                     <View style={StyleSheet.createNoteItem}>
                         <TouchableOpacity>
-                            <Icon name="plus-square" size={30} color="black" />
+                            <Icon name="plus-square" size={26} color="black" />
                         </TouchableOpacity>
                     </View>
                     <View style={StyleSheet.createNoteItem}>
                         <TouchableOpacity>
-                            <Icon name="more-vertical" size={30} color="black" />
+                            <Icon name="more-vertical" size={26} color="black" />
                         </TouchableOpacity>
                     </View>
                 </View>
