@@ -172,12 +172,15 @@ export default StyleSheet.create({
     reminderDialog: {
         flexDirection: "column",
         justifyContent:"space-between",
-        minWidth:"90%"
+        minWidth: "90%",
     },
     reminderTitle: {
         fontFamily: "Times New Roman",
         fontWeight: "bold",
         fontSize: 18,
     },
-    reminderButton
+    reminderButton: {
+        flexDirection: "row",
+        justifyContent: "flex-end"
+    }
 })

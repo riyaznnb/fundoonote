@@ -89,17 +89,19 @@ export default class Reminder extends Component {
                                     <Picker.Item label="Select a date..." onPress={this.showDatePicker}/>
                                 </Picker>
                             </View>
+                            <Divider/>
                             <View>
                             <Picker
                                     selectedValue={this.state.time}>
                                     <Picker.Item label="Select a Time..." onPress={this.showTimePicker}/>
                                 </Picker>
                             </View>
+                            <Divider/>
                             <View style={StyleSheet.reminderButton}>
-                                <View>
+                                <View style={{margin:5}}>
                                     <Button title="Cancel" />
                                 </View>
-                                <View>
+                                <View style={{margin:5}}>
                                 <Button title="Save"/>
                                 </View>
                             </View>
