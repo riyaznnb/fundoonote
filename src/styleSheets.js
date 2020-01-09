@@ -92,7 +92,7 @@ export default StyleSheet.create({
     headerFooter: {
         flex:1,
         flexDirection: "column",
-        justifyContent:"space-between"
+         justifyContent:"space-between"
     },
     headerAndNotes: {
         flexDirection: "column",
@@ -100,6 +100,7 @@ export default StyleSheet.create({
     footer: {
         backgroundColor: "white",
         height: 50,
+        elevation:20
     },
     footerItem: {
         marginLeft: 10,
@@ -149,13 +150,23 @@ export default StyleSheet.create({
         fontSize: 20,
     },
     getNoteCard: {
+        minWidth: "50%",
+        borderRadius: 20,
+        
+    },
+    noteCard: {
         flexDirection: "column",
         justifyContent: "space-between",
-        borderRadius: 10,
+        borderRadius: 20, 
     },
-    noteArea: {
-        // alignSelf:"flex-start",
-        // flexDirection: "row",
-        // flexWrap:"nowrap",
+    noteAreaGrid: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        flexWrap:"wrap"
+    },
+    noteAreaList: {
+        flexDirection: "column",
+        justifyContent: "space-between",
+        flexWrap:"wrap"
     },
 })

@@ -6,12 +6,13 @@ import Icon from 'react-native-vector-icons/Feather'
 import Icons from 'react-native-vector-icons/MaterialIcons'
 import GetNote from './getNote';
 import { getNote } from '../../services/userService';
+import { ScrollView } from 'react-native-gesture-handler';
 export default class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
             gridView: true,
-            notes:[]
+            notes: []
         }
     }
     handleView = () => {
@@ -25,78 +26,80 @@ export default class Dashboard extends Component {
     }
     getAllNotes = () => {
         getNote().then(res => {
-            console.warn('result in getting', res);
-            console.log("result in gettting",res.data.data.data)
-            this.setState({notes:res.data.data.data})
+            this.setState({ notes: res.data.data.data })
         })
             .catch(error => {
-            console.warn('Getnote error',error.message);
-        })
+                console.warn('Getnote error', error.message);
+            })
     }
 
     render() {
         let notes = this.state.notes.map(item => {
-            return(
-            <GetNote
-                title={item.title}
-                description={item.description}
-                isPined={item.isPined}/>
-         ) })
+            return (
+                <GetNote
+                    key={item.id}
+                    title={item.title}
+                    description={item.description}
+                    isPined={item.isPined} />
+            )
+        })
+        let viewStyle=this.state.gridView?StyleSheet.noteAreaGrid:StyleSheet.noteAreaList
         return (
             <View style={StyleSheet.headerFooter}>
-                <View style={StyleSheet.headerAndNotes}>
-                    <Card containerStyle={StyleSheet.headerCard}>
-                        <View style={StyleSheet.header}>
-                            <View style={StyleSheet.headerLeft}>
-                                <View style={StyleSheet.headerItem}>
-                                    <TouchableOpacity>
-                                        <Icon name="menu" size={30} color="black" />
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={StyleSheet.headerItem}>
-                                    <Text style={StyleSheet.fundoonoteTitleInHeader}>
-                                        <Text style={StyleSheet.titleF}>f</Text>
-                                        <Text style={StyleSheet.titleU}>u</Text>
-                                        <Text style={StyleSheet.titleN}>n</Text>
-                                        <Text style={StyleSheet.titleD}>d</Text>
-                                        <Text style={StyleSheet.titleO}>o</Text>
-                                        <Text style={StyleSheet.titleO}>o</Text>
-                                    </Text>
-                                </View>
-                            </View>
-                            <View style={StyleSheet.headerRight}>
-                                {this.state.gridView ?
+                <ScrollView>
+                    <View style={StyleSheet.headerAndNotes}>
+                        <Card containerStyle={StyleSheet.headerCard}>
+                            <View style={StyleSheet.header}>
+                                <View style={StyleSheet.headerLeft}>
                                     <View style={StyleSheet.headerItem}>
-                                        <TouchableOpacity onPress={this.handleView}>
-                                            <Icon name="grid" size={30} color="black" />
-                                        </TouchableOpacity>
-                                    </View> :
-                                    <View style={StyleSheet.headerItem}>
-                                        <TouchableOpacity onPress={this.handleView}>
-                                            <Icons name="list" size={30} color="black" />
+                                        <TouchableOpacity>
+                                            <Icon name="menu" size={30} color="black" />
                                         </TouchableOpacity>
                                     </View>
-                                }
+                                    <View style={StyleSheet.headerItem}>
+                                        <Text style={StyleSheet.fundoonoteTitleInHeader}>
+                                            <Text style={StyleSheet.titleF}>f</Text>
+                                            <Text style={StyleSheet.titleU}>u</Text>
+                                            <Text style={StyleSheet.titleN}>n</Text>
+                                            <Text style={StyleSheet.titleD}>d</Text>
+                                            <Text style={StyleSheet.titleO}>o</Text>
+                                            <Text style={StyleSheet.titleO}>o</Text>
+                                        </Text>
+                                    </View>
+                                </View>
+                                <View style={StyleSheet.headerRight}>
+                                    {this.state.gridView ?
+                                        <View style={StyleSheet.headerItem}>
+                                            <TouchableOpacity onPress={this.handleView}>
+                                                <Icon name="grid" size={30} color="black" />
+                                            </TouchableOpacity>
+                                        </View> :
+                                        <View style={StyleSheet.headerItem}>
+                                            <TouchableOpacity onPress={this.handleView}>
+                                                <Icons name="list" size={30} color="black" />
+                                            </TouchableOpacity>
+                                        </View>
+                                    }
 
-                                <View style={StyleSheet.headerItem}>
-                                    <TouchableOpacity>
-                                        <Avatar size="small"
-                                            overlayContainerStyle={{
-                                                backgroundColor: "skyblue"
-                                            }}
-                                            rounded
-                                            title="R"
-                                            activeOpacity={0.7} />
-                                    </TouchableOpacity>
+                                    <View style={StyleSheet.headerItem}>
+                                        <TouchableOpacity>
+                                            <Avatar size="small"
+                                                overlayContainerStyle={{
+                                                    backgroundColor: "skyblue"
+                                                }}
+                                                rounded
+                                                title="R"
+                                                activeOpacity={0.7} />
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                             </View>
-                        </View>
                     </Card>
-                    <View style={StyleSheet.noteArea}>
-                    {notes}
-                    </View>
+                    <View style={viewStyle}>
+                            {notes}
+                        </View>
                 </View>
-                <View>
+                </ScrollView>
                     <View style={StyleSheet.footer}>
                         <View style={StyleSheet.header}>
                             <View style={StyleSheet.headerLeft}>
@@ -125,7 +128,6 @@ export default class Dashboard extends Component {
                             </View>
                         </View>
                     </View>
-                </View>
             </View>
         )
     }

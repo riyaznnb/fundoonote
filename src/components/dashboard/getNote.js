@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, Image,Modal,TouchableHighlight, ScrollView } from 'react-native'
-import StyleSheet from '../../styleSheets'
-import { Card, Avatar } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/Feather'
-import Icons from 'react-native-vector-icons/AntDesign'
-import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
-import IconMaterial from 'react-native-vector-icons/MaterialIcons'
-import { addNote } from '../../services/userService';
-import styleSheets from '../../styleSheets';
+import { View, Text} from 'react-native'
+import { Card} from 'react-native-elements'
+import StyleSheet from '../../styleSheets';
 export default class GetNote extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +13,8 @@ export default class GetNote extends Component {
 
     render() {
         return (
-            <Card containerStyle={styleSheets.getNoteCard}>
+            <View style={StyleSheet.getNoteCard}>
+                <Card containerStyle={StyleSheet.noteCard}>
                 <View>
                     <Text>{this.props.title}</Text>
                 </View>
@@ -27,6 +22,7 @@ export default class GetNote extends Component {
                     <Text>{this.props.description}</Text>
                 </View>
             </Card>
+            </View>
         )
     }
 }
