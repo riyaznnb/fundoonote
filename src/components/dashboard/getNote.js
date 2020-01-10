@@ -14,7 +14,7 @@ export default class GetNote extends Component {
     }
     render() {
         return (
-            <View style={StyleSheet.getNoteCard}>
+            <View style={this.props.viewStyle}>
                 <Card containerStyle={StyleSheet.noteCard}>
                     <View>
                         <Text>{this.props.title}</Text>

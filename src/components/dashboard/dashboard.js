@@ -34,6 +34,9 @@ export default class Dashboard extends Component {
     }
 
     render() {
+        let viewStyle = this.state.gridView ?
+            { noteArea: StyleSheet.noteAreaGrid, noteCard: StyleSheet.getNoteCard }
+            : { noteArea: StyleSheet.noteAreaList,noteCard:StyleSheet.getNoteCardList}
         let notes = this.state.notes.map(item => {
             return (
                 <GetNote
@@ -41,10 +44,10 @@ export default class Dashboard extends Component {
                     title={item.title}
                     description={item.description}
                     isPined={item.isPined}
-                    reminder={item.reminder}/>
+                    reminder={item.reminder}
+                    viewStyle={viewStyle.noteCard}/>
             )
         })
-        let viewStyle = this.state.gridView ? StyleSheet.noteAreaGrid : StyleSheet.noteAreaList
         return (
             <View style={StyleSheet.headerFooter}>
                 <ScrollView>
@@ -96,7 +99,7 @@ export default class Dashboard extends Component {
                                 </View>
                             </View>
                         </Card>
-                        <View style={viewStyle}>
+                        <View style={viewStyle.noteArea}>
                             {notes}
                         </View>
                     </View>

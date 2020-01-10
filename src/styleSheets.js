@@ -155,9 +155,12 @@ export default StyleSheet.create({
         fontSize: 20,
     },
     getNoteCard: {
-       minWidth:"50%",
+       width:"50%",
         borderRadius: 20,   
     },
+    getNoteCardList: {
+         borderRadius: 20,   
+     },
     noteCard: {
         flexDirection: "column",
         justifyContent: "space-between",
@@ -190,9 +193,8 @@ export default StyleSheet.create({
     reminderTitleContainer: {
         margin:10
     },
-    datePicker: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignContent:"center"
-    }
+    // reminderDatePicker: {
+    //     flexDirection: "row",
+    //     justifyContent:"space-between"
+    // }
 })
