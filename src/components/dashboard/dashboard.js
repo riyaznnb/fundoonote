@@ -40,10 +40,11 @@ export default class Dashboard extends Component {
                     key={item.id}
                     title={item.title}
                     description={item.description}
-                    isPined={item.isPined} />
+                    isPined={item.isPined}
+                    reminder={item.reminder}/>
             )
         })
-        let viewStyle=this.state.gridView?StyleSheet.noteAreaGrid:StyleSheet.noteAreaList
+        let viewStyle = this.state.gridView ? StyleSheet.noteAreaGrid : StyleSheet.noteAreaList
         return (
             <View style={StyleSheet.headerFooter}>
                 <ScrollView>
@@ -81,7 +82,6 @@ export default class Dashboard extends Component {
                                             </TouchableOpacity>
                                         </View>
                                     }
-
                                     <View style={StyleSheet.headerItem}>
                                         <TouchableOpacity>
                                             <Avatar size="small"
@@ -95,40 +95,40 @@ export default class Dashboard extends Component {
                                     </View>
                                 </View>
                             </View>
-                    </Card>
-                    <View style={viewStyle}>
+                        </Card>
+                        <View style={viewStyle}>
                             {notes}
                         </View>
-                </View>
+                    </View>
                 </ScrollView>
-                    <View style={StyleSheet.footer}>
-                        <View style={StyleSheet.header}>
-                            <View style={StyleSheet.headerLeft}>
-                                <View style={StyleSheet.footerItem}>
-                                    <TouchableOpacity>
-                                        <Icon name="check-square" size={25} color="black" />
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={StyleSheet.footerItem}>
-                                    <TouchableOpacity>
-                                        <Icons name="brush" size={25} color="black" />
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={StyleSheet.footerItem}>
-                                    <TouchableOpacity>
-                                        <Icon name="mic" size={25} color="black" />
-                                    </TouchableOpacity>
-                                </View>
+                <View style={StyleSheet.footer}>
+                    <View style={StyleSheet.header}>
+                        <View style={StyleSheet.headerLeft}>
+                            <View style={StyleSheet.footerItem}>
+                                <TouchableOpacity>
+                                    <Icon name="check-square" size={25} color="black" />
+                                </TouchableOpacity>
                             </View>
-                            <View style={StyleSheet.headerRight}>
-                                <View style={StyleSheet.addIcon}>
-                                    <TouchableOpacity onPress={this.handleCreateNote}>
-                                        <Icon name="plus" size={60} color="red" />
-                                    </TouchableOpacity>
-                                </View>
+                            <View style={StyleSheet.footerItem}>
+                                <TouchableOpacity>
+                                    <Icons name="brush" size={25} color="black" />
+                                </TouchableOpacity>
+                            </View>
+                            <View style={StyleSheet.footerItem}>
+                                <TouchableOpacity>
+                                    <Icon name="mic" size={25} color="black" />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        <View style={StyleSheet.headerRight}>
+                            <View style={StyleSheet.addIcon}>
+                                <TouchableOpacity onPress={this.handleCreateNote}>
+                                    <Icon name="plus" size={60} color="red" />
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </View>
+                </View>
             </View>
         )
     }

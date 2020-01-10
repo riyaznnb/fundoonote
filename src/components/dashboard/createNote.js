@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, Image, Modal, TouchableHighlight, ScrollView } from 'react-native'
+import { View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 import StyleSheet from '../../styleSheets'
-import { Card, Avatar } from 'react-native-elements'
+import { Chip } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather'
 import Icons from 'react-native-vector-icons/AntDesign'
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -12,10 +12,12 @@ export default class CreateNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
+        
             pinned: false,
             reminderOpen: false,
             title: '',
-            description: ''
+            description: '',
+            reminder:''
         }
     }
     handlePinned = () => {
@@ -27,6 +29,9 @@ export default class CreateNote extends Component {
     reminderModalClose = () => {
         this.setState({ reminderOpen: false })
     }
+    handleReminder = reminder => {
+        this.setState({reminder:reminder})
+    }
     navigateDashboard = () => {
         if (this.state.title === '' && this.state.description === '') {
             this.props.navigation.navigate('dashboard')
@@ -35,7 +40,8 @@ export default class CreateNote extends Component {
             const data = {
                 title: this.state.title,
                 description: this.state.description,
-                isPined: this.state.pinned
+                isPined: this.state.pinned,
+                reminder:this.state.reminder
             }
             addNote(data).then(res => {
                 console.warn("addnote result", res)
@@ -71,7 +77,7 @@ export default class CreateNote extends Component {
                                     </TouchableOpacity>
                                 </View>
                                 <View style={StyleSheet.createNoteItem}>
-                                    <Reminder/>
+                                    <Reminder handleReminder={this.handleReminder}/>
                                 </View>
                                 <View style={StyleSheet.createNoteItem}>
                                     <TouchableOpacity>
@@ -96,6 +102,15 @@ export default class CreateNote extends Component {
                                     placeholder="Note"
                                     value={this.state.description}
                                     onChangeText={(description) => this.setState({ description })} />
+                            </View>
+                            <View style={StyleSheet.createNoteReminder}>
+                                {this.state.reminder.length > 1 &&
+                                    <TouchableOpacity>
+                                        <Chip>
+                                        <IconM name="clock-outline" size={20} color="black" />
+                                        {this.state.reminder}
+                                        </Chip>
+                                    </TouchableOpacity>}
                             </View>
                         </View>
                     </View>

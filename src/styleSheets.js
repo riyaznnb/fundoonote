@@ -142,8 +142,11 @@ export default StyleSheet.create({
         justifyContent:"space-between"
     },
     createNoteItem: {
+        margin:10 
+    },
+    createNoteReminder: {
+        maxWidth: "50%",
         margin:10
-        
     },
     createNoteTitle: {
         fontSize:28

@@ -17,8 +17,7 @@ export default class Reminder extends Component {
             selectedMinutes: 0,
             openTime: false,
             date: '',
-            time: '',
-            reminder:''
+            time: ''
         };
     }
     showDatePicker = () => {
@@ -51,7 +50,7 @@ export default class Reminder extends Component {
     }
     reminderSave = () => {
         let reminder = this.state.date + ' ' + this.state.time;
-        this.setState({ reminder: reminder })
+        this.props.handleReminder(reminder);
         this.reminderDialogClose()
     }
     render() {
@@ -69,8 +68,7 @@ export default class Reminder extends Component {
                             <View style={StyleSheet.reminderTitleContainer}>
                                 <Text style={StyleSheet.reminderTitle}>Add Reminder</Text>
                             </View>
-                            <View onPress={this.showDatePicker}>
-                                <Text>{this.state.date}</Text>
+                            <View>
                                 <Picker
                                     selectedValue={this.state.date}
                                     onValueChange={() => {
@@ -95,7 +93,7 @@ export default class Reminder extends Component {
                                 </Picker>
                             </View>
                             <Divider />
-                            <Text>{this.state.time}</Text>
+                            <Text>{this.state.date+' '+this.state.time}</Text>
                             <View style={StyleSheet.reminderButton}>
                                 <View style={{ margin: 5 }}>
                                     <Button title="Cancel" onPress={this.reminderDialogClose}/>
