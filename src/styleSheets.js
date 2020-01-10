@@ -184,5 +184,8 @@ export default StyleSheet.create({
     reminderButton: {
         flexDirection: "row",
         justifyContent: "flex-end"
+    },
+    reminderTitleContainer: {
+        margin:10
     }
 })
