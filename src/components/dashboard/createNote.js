@@ -7,6 +7,7 @@ import Icons from 'react-native-vector-icons/AntDesign'
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconMaterial from 'react-native-vector-icons/MaterialIcons'
 import { addNote } from '../../services/userService';
+import Reminder from './reminder';
 export default class CreateNote extends Component {
     constructor(props) {
         super(props);
@@ -70,9 +71,7 @@ export default class CreateNote extends Component {
                                     </TouchableOpacity>
                                 </View>
                                 <View style={StyleSheet.createNoteItem}>
-                                    <TouchableOpacity onPress={this.reminderModalOpen}>
-                                        <IconM name="bell-plus" size={26} color="black" />
-                                    </TouchableOpacity>
+                                    <Reminder/>
                                 </View>
                                 <View style={StyleSheet.createNoteItem}>
                                     <TouchableOpacity>

@@ -3,6 +3,7 @@ import { Button, View, Text, TouchableOpacity, Picker } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import { Tooltip, Divider } from "react-native-elements";
 import Icon4 from "react-native-vector-icons/FontAwesome";
+import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import StyleSheet from '../../styleSheets'
 import Dialog, { DialogContent } from "react-native-popup-dialog";
 export default class Reminder extends Component {
@@ -54,23 +55,14 @@ export default class Reminder extends Component {
     render() {
         return (
             <View>
-                <View>
-
-                    <TouchableOpacity>
-                        <Icon4
-                            name="plus-square"
-                            size={40}
-                            onPress={() => {
-                                this.setState({ reminderDialog: true });
-                            }}
-                        />
-                    </TouchableOpacity>
-
-                </View>
+                <TouchableOpacity
+                    onPress={() => { this.setState({ reminderDialog: true }); }}>
+                    <IconM name="bell-plus" size={26} color="black" />
+                </TouchableOpacity>
                 <Dialog
                     visible={this.state.reminderDialog}
                     onTouchOutside={() => {
-                        this.setState({ visible: false });
+                        this.setState({ reminderDialog: false });
                     }}>
                     <DialogContent>
                         <View style={StyleSheet.reminderDialog}>
@@ -78,15 +70,6 @@ export default class Reminder extends Component {
                                 <Text style={StyleSheet.reminderTitle}>Add Reminder</Text>
                             </View>
                             <View onPress={this.showDatePicker}>
-                                {/* <TouchableOpacity>
-                                    <Icon4
-                                        name="plus-square"
-                                        size={40}
-                                        onPress={() => {
-                                            this.setState({ isDatePickerVisible: true });
-                                        }}
-                                    />
-                                </TouchableOpacity> */}
                                 <Picker
                                     selectedValue={this.state.date}
                                     onValueChange={() => {

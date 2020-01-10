@@ -18,7 +18,7 @@ export default StyleSheet.create({
     fundoonoteTitle: {
         fontFamily: "Times New Roman",
         fontWeight: "bold",
-        fontSize: 35
+        fontSize: 30
     },
     titleF:{
         color:"#F70741"
@@ -66,7 +66,9 @@ export default StyleSheet.create({
 
     headerCard: {
         height: 50,
-        borderRadius: 20
+        borderRadius: 20,
+        justifyContent:"center"
+
     },
     headerLeft: {
         flexDirection: "row", 
@@ -81,7 +83,7 @@ export default StyleSheet.create({
         justifyContent: "space-between",
     },
     headerItem: {
-        marginTop: -8,
+//marginTop: -8,
         marginLeft:10
     },
     fundoonoteTitleInHeader: {

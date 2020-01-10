@@ -58,12 +58,13 @@ export default class Dashboard extends Component {
                                     </View>
                                     <View style={StyleSheet.headerItem}>
                                         <Text style={StyleSheet.fundoonoteTitleInHeader}>
-                                            <Text style={StyleSheet.titleF}>f</Text>
+                                            <Text>Fundoo</Text>
+                                            {/* <Text style={StyleSheet.titleF}>f</Text>
                                             <Text style={StyleSheet.titleU}>u</Text>
                                             <Text style={StyleSheet.titleN}>n</Text>
                                             <Text style={StyleSheet.titleD}>d</Text>
                                             <Text style={StyleSheet.titleO}>o</Text>
-                                            <Text style={StyleSheet.titleO}>o</Text>
+                                            <Text style={StyleSheet.titleO}>o</Text> */}
                                         </Text>
                                     </View>
                                 </View>

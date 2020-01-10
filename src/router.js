@@ -52,6 +52,6 @@ const AppNavigator = createStackNavigator({
  
     
     {
-        initialRouteName: "reminder",
+        initialRouteName: "dashboard",
     });
 export default AppNavigator;
