@@ -12,12 +12,12 @@ export default class CreateNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        
             pinned: false,
             reminderOpen: false,
             title: '',
             description: '',
-            reminder:''
+            reminder: '',
+            notes:[]
         }
     }
     handlePinned = () => {

@@ -12,7 +12,7 @@ export default class Dashboard extends Component {
         super(props);
         this.state = {
             gridView: true,
-            notes: []
+            notes:[]
         }
     }
     handleView = () => {

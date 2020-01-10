@@ -22,14 +22,12 @@ export default class GetNote extends Component {
                     <View>
                         <Text>{this.props.description}</Text>
                     </View>
-                    <View>
-                        {this.props.reminder!=''&&
-                            <TouchableOpacity>
-                                <Chip style={{width:"80%"}}>
-                                    <IconM name="clock-outline" size={20} color="black" />
-                                    {this.props.reminder}
-                                </Chip>
-                            </TouchableOpacity>}
+                    <View >
+                        {this.props.reminder != '' &&
+                            <Chip >
+                                <IconM name="clock-outline" size={15} color="black" />
+                                {this.props.reminder}
+                            </Chip>}
                     </View>
                 </Card>
             </View>

@@ -53,7 +53,19 @@ export default class Reminder extends Component {
         this.props.handleReminder(reminder);
         this.reminderDialogClose()
     }
+    handleDatePicker = date => {
+        console.warn('selected date',date)
+        if (date === "date") {
+            this.setState({isDatePickerVisible:true})
+        }
+        else {
+            this.setState({date:date.toDateString()})   
+        }
+    }
     render() {
+        let today = new Date();
+        let tomorrow = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1);
+        let nextweek = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 7);
         return (
             <View>
                 <TouchableOpacity
@@ -68,17 +80,16 @@ export default class Reminder extends Component {
                             <View style={StyleSheet.reminderTitleContainer}>
                                 <Text style={StyleSheet.reminderTitle}>Add Reminder</Text>
                             </View>
-                            <View>
+                            <View >
                                 <Picker
-                                    selectedValue={this.state.date}
-                                    onValueChange={() => {
-                                        this.setState({ isDatePickerVisible: true });
+                                    onValueChange={(value) => {
+                                        this.handleDatePicker(value)
                                     }}>
-                                    {/* <Picker.Item label="Today" onPress={this.handleTodayDate} />
-                                    <Picker.Item label="Tomorrow" onPress={this.handleTomorrowDate} />
-                                    <Picker.Item label="Next Week" onPress={this.handleNextWeekDate} /> */}
                                     <Picker.Item label="Select your Option" />
-                                    <Picker.Item label="Select a date..." />
+                                    <Picker.Item label="Today" value={today} />
+                                    <Picker.Item label="Tomorrow" value={tomorrow} />
+                                    <Picker.Item label="Next Week" value={nextweek} /> 
+                                    <Picker.Item label="Select a date..." value="date"/>
                                 </Picker>
                             </View>
                             <Divider />
@@ -105,11 +116,13 @@ export default class Reminder extends Component {
                             <DateTimePicker
                                 isVisible={this.state.isDatePickerVisible}
                                 onConfirm={this.handleDatePicked}
-                                onCancel={this.hideDatePicker} />
+                                onCancel={this.hideDatePicker}
+                                minimumDate={today}/>
                             <DateTimePicker
                                 isVisible={this.state.isTimePickerVisible}
                                 onConfirm={this.handleTimePicked}
                                 onCancel={this.hideTimePicker}
+                                is24Hour={false}
                                 mode="time" />
                         </View>
                     </DialogContent>
