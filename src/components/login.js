@@ -56,7 +56,11 @@ export default class Login extends Component {
                     </Text>
                 </View>
                 <View style={StyleSheet.registerContainer}>
+                    
                     <Card>
+                    <View style={StyleSheet.loginTitle}>
+                        <Text style={StyleSheet.loginTitleText}>Login</Text>
+                    </View>
                         <View >
                             <TextInput
                                 style={StyleSheet.registerContainerInput}

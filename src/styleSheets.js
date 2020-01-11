@@ -15,6 +15,17 @@ export default StyleSheet.create({
         marginTop:"10%"
         
     },
+    loginTitle: {
+        display: "flex",
+        alignItems: "center",
+        fontFamily: "Times New Roman",
+        fontWeight: "bold",
+        fontSize: 30
+    },
+    loginTitleText: {
+        fontFamily: "Times New Roman",
+        fontSize: 30
+    },
     fundoonoteTitle: {
         fontFamily: "Times New Roman",
         fontWeight: "bold",

@@ -5,7 +5,6 @@ import { AsyncStorage } from 'react-native';
 
 export function userRegister(data) {
     console.warn("Data", data);
-    console.warn('api',apiConstant.signUp);
     return axios.post("http://fundoonotes.incubation.bridgelabz.com/api" + userApiConstant.signUp, data)
 }
 export function userLogin(data) {
