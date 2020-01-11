@@ -61,8 +61,11 @@ export default class Register extends Component {
                         </Text>
                 </View>
                 <View style={StyleSheet.registerContainer}>
-                    <Card>
-                        <View >
+                    <Card containerStyle={{borderRadius:10}}>
+                        <View style={StyleSheet.loginTitle}>
+                            <Text style={StyleSheet.loginTitleText}>REGISTRATION</Text>
+                        </View>
+                        <View style={{marginTop:"5%"}}>
                             <TextInput
                                 style={StyleSheet.registerContainerInput}
                                 placeholder="First_Name"

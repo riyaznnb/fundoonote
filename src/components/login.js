@@ -41,7 +41,7 @@ export default class Login extends Component {
     render() {
         return (
             <ScrollView>
-                <View style={StyleSheet.registerTitle}>
+                 <View style={StyleSheet.registerTitle}>
                     <Text style={StyleSheet.fundoonoteTitle}>
                         <Text style={StyleSheet.titleF}>f</Text>
                         <Text style={StyleSheet.titleU}>u</Text>
@@ -56,12 +56,11 @@ export default class Login extends Component {
                     </Text>
                 </View>
                 <View style={StyleSheet.registerContainer}>
-                    
-                    <Card>
+                    <Card containerStyle={{borderRadius:10}}>
                     <View style={StyleSheet.loginTitle}>
-                        <Text style={StyleSheet.loginTitleText}>Login</Text>
-                    </View>
-                        <View >
+                            <Text style={StyleSheet.loginTitleText}>Sign In</Text>
+                        </View>
+                        <View style={{marginTop:"5%"}}>
                             <TextInput
                                 style={StyleSheet.registerContainerInput}
                                 placeholder="Email"

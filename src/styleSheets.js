@@ -6,30 +6,29 @@ export default StyleSheet.create({
         shadowOffset: { width: 1, height: 4 },
         shadowOpacity: 0.8,
         shadowRadius: 4,
-        elevation:4
+        elevation: 4,
+       // marginTop:"10%"
     },
     registerTitle: {
         display: "flex",
         alignItems: "center",
-        marginBottom: "5%",
+       // marginBottom: "5%",
         marginTop:"10%"
         
     },
     loginTitle: {
         display: "flex",
         alignItems: "center",
-        fontFamily: "Times New Roman",
-        fontWeight: "bold",
-        fontSize: 30
     },
     loginTitleText: {
-        fontFamily: "Times New Roman",
-        fontSize: 30
+        fontFamily: "serif",
+        fontSize: 26,
+        color:"#A22DAE"
     },
     fundoonoteTitle: {
         fontFamily: "Times New Roman",
         fontWeight: "bold",
-        fontSize: 30
+        fontSize: 36
     },
     titleF:{
         color:"#F70741"
@@ -57,7 +56,8 @@ export default StyleSheet.create({
         borderBottomWidth: 1,
         width: "100%",
         marginBottom: "5%",
-        flexDirection: 'row'
+        flexDirection: 'row',
+        backgroundColor:"#F2F2F2"
     },
     registerButton: {
         // width: "25%",

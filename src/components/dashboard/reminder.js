@@ -97,13 +97,13 @@ export default class Reminder extends Component {
                                         selectedValue={this.state.date}
                                         onValueChange={(value) => { this.handleDatePicker(value) }}>
                                         {this.state.date != '' ?
-                                            <Picker.Item label="date" value={this.state.date} />
+                                            <Picker.Item label="Select date"/>
                                             :
                                             <Picker.Item label="Select Date" />}
-                                        <Picker.Item label="Today" value={today} />
-                                        <Picker.Item label="Tomorrow" value={tomorrow} />
-                                        <Picker.Item label="Next Week" value={nextweek} />
-                                        <Picker.Item label="Select a date..." value="date" />
+                                        <Picker.Item label="Today" value={today.toDateString()} />
+                                        <Picker.Item label="Tomorrow" value={tomorrow.toDateString()} />
+                                        <Picker.Item label="Next Week" value={nextweek.toDateString()} />
+                                        <Picker.Item label="Pick date..." value="date" />
                                     </Picker>
                                 </View>
                             </View>
