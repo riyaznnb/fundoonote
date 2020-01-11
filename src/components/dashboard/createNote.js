@@ -16,6 +16,7 @@ import IconFont from 'react-native-vector-icons/FontAwesome5'
 import { addNote } from '../../services/userService';
 import Reminder from './reminder';
 import RBSheet from "react-native-raw-bottom-sheet";
+import { Avatar } from 'react-native-elements';
 export default class CreateNote extends Component {
     constructor(props) {
         super(props);
@@ -182,6 +183,9 @@ export default class CreateNote extends Component {
                             <View style={StyleSheet.moreContainerText}>
                             <Text>Label</Text>
                             </View>
+                        </View>
+                        <View style={StyleSheet.moreContainerIconText}>
+                            <Avatar rounded containerStyle={{backgroundColor:"black"}}/>
                         </View>
                     </View>
                 </RBSheet>
