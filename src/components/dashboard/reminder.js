@@ -1,8 +1,13 @@
+/******************************************************************************************
+* @purpose : Reminder component for fundoonote application
+* @file : reminder.js
+* @author : Riyazuddin K
+* @since : 10-01-2020
+******************************************************************************************/
 import React, { Component } from "react";
 import { Button, View, Text, TouchableOpacity, Picker } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
-import { Tooltip, Divider } from "react-native-elements";
-import Icon4 from "react-native-vector-icons/FontAwesome";
+import { Divider } from "react-native-elements";
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import StyleSheet from '../../styleSheets'
 import Dialog, { DialogContent } from "react-native-popup-dialog";
@@ -36,17 +41,17 @@ export default class Reminder extends Component {
     };
     handleDatePicked = date => {
         console.log("A date has been picked: ", date);
-        this.setState({date:date.toDateString()})
+        this.setState({ date: date.toDateString() })
         this.hideDatePicker();
     };
     handleTimePicked = time => {
         console.log("A date has been picked: ", time);
         time = time.getHours() + ":" + time.getMinutes()
-        this.setState({time:time})
+        this.setState({ time: time })
         this.hideTimePicker();
     };
     reminderDialogClose = () => {
-        this.setState({reminderDialog:false,date:'',time:''})
+        this.setState({ reminderDialog: false, date: '', time: '' })
     }
     reminderSave = () => {
         let reminder = this.state.date + ' ' + this.state.time;
@@ -55,17 +60,17 @@ export default class Reminder extends Component {
     }
     handleDatePicker = date => {
         console.warn('selected date', date)
-        console.log('selected date',date)
+        console.log('selected date', date)
         if (date === "date") {
-            this.setState({isDatePickerVisible:true})
+            this.setState({ isDatePickerVisible: true })
         }
         else {
-            this.setState({date:date})   
+            this.setState({ date: date })
         }
     }
     handleTimePicker = time => {
         if (time === "time") {
-            this.setState({isTimePickerVisible:true})
+            this.setState({ isTimePickerVisible: true })
         }
     }
     render() {
@@ -89,43 +94,43 @@ export default class Reminder extends Component {
                             <View >
                                 <View>
                                     <Picker
-                                    selectedValue={this.state.date}
+                                        selectedValue={this.state.date}
                                         onValueChange={(value) => { this.handleDatePicker(value) }}>
                                         {this.state.date != '' ?
-                                            <Picker.Item label={this.state.date.toDateString()} value={this.state.date}/>
+                                            <Picker.Item label={this.state.date.toDateString()} value={this.state.date} />
                                             :
                                             <Picker.Item label="Select Date" />}
-                                    <Picker.Item label="Today" value={today} />
-                                    <Picker.Item label="Tomorrow" value={tomorrow} />
-                                    <Picker.Item label="Next Week" value={nextweek} /> 
-                                    <Picker.Item label="Select a date..." value="date"/>
-                                </Picker>
+                                        <Picker.Item label="Today" value={today} />
+                                        <Picker.Item label="Tomorrow" value={tomorrow} />
+                                        <Picker.Item label="Next Week" value={nextweek} />
+                                        <Picker.Item label="Select a date..." value="date" />
+                                    </Picker>
                                 </View>
                             </View>
                             <Divider />
                             <View>
                                 <Picker
                                     selectedValue={this.state.time}
-                                    onValueChange={(value) => {this.handleTimePicker(value)}}>
+                                    onValueChange={(value) => { this.handleTimePicker(value) }}>
                                     {this.state.time != '' ? <Picker.Item label={this.state.time} /> :
-                                <Picker.Item label="Select Time " />}
-                                    <Picker.Item label="Select a Time..." value="time"/>
+                                        <Picker.Item label="Select Time " />}
+                                    <Picker.Item label="Select a Time..." value="time" />
                                 </Picker>
                             </View>
                             <Divider />
                             <View style={StyleSheet.reminderButton}>
                                 <View style={{ margin: 5 }}>
-                                    <Button title="Cancel" onPress={this.reminderDialogClose} style={{color:"white"}}/>
+                                    <Button title="Cancel" onPress={this.reminderDialogClose} style={{ color: "white" }} />
                                 </View>
                                 <View style={{ margin: 5 }}>
-                                    <Button title="Save" onPress={this.reminderSave}/>
+                                    <Button title="Save" onPress={this.reminderSave} />
                                 </View>
                             </View>
                             <DateTimePicker
                                 isVisible={this.state.isDatePickerVisible}
                                 onConfirm={this.handleDatePicked}
                                 onCancel={this.hideDatePicker}
-                                minimumDate={today}/>
+                                minimumDate={today} />
                             <DateTimePicker
                                 isVisible={this.state.isTimePickerVisible}
                                 onConfirm={this.handleTimePicked}

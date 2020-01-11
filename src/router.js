@@ -1,5 +1,5 @@
 /******************************************************************************************
-* @purpose : App support multiple resolution for Calling the components Using React-Native
+* @purpose : Navigate the components.
 * @file : router.js
 * @author : Riyazuddin K
 * @since : 03-01-2020
@@ -52,6 +52,6 @@ const AppNavigator = createStackNavigator({
  
     
     {
-        initialRouteName: "dashboard",
+        initialRouteName: "login",
     });
 export default AppNavigator;

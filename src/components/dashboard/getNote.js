@@ -1,5 +1,11 @@
+/******************************************************************************************
+* @purpose : GetNote component for fundoonote application
+* @file : getNote.js
+* @author : Riyazuddin K
+* @since : 08-01-2020
+******************************************************************************************/
 import React, { Component } from 'react';
-import { View, Text,TouchableOpacity } from 'react-native'
+import { View, Text } from 'react-native'
 import { Card } from 'react-native-elements'
 import StyleSheet from '../../styleSheets';
 import { Chip } from 'react-native-paper';

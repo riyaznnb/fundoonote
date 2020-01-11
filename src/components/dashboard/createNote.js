@@ -1,3 +1,9 @@
+/******************************************************************************************
+* @purpose : Create a note component for fundoonote application
+* @file : createNote.js
+* @author : Riyazuddin K
+* @since : 08-01-2020
+******************************************************************************************/
 import React, { Component } from 'react';
 import { View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 import StyleSheet from '../../styleSheets'
@@ -17,7 +23,7 @@ export default class CreateNote extends Component {
             title: '',
             description: '',
             reminder: '',
-            notes:[]
+            notes: []
         }
     }
     handlePinned = () => {
@@ -30,7 +36,7 @@ export default class CreateNote extends Component {
         this.setState({ reminderOpen: false })
     }
     handleReminder = reminder => {
-        this.setState({reminder:reminder})
+        this.setState({ reminder: reminder })
     }
     navigateDashboard = () => {
         if (this.state.title === '' && this.state.description === '') {
@@ -41,7 +47,7 @@ export default class CreateNote extends Component {
                 title: this.state.title,
                 description: this.state.description,
                 isPined: this.state.pinned,
-                reminder:this.state.reminder
+                reminder: this.state.reminder
             }
             addNote(data).then(res => {
                 console.warn("addnote result", res)
@@ -77,14 +83,13 @@ export default class CreateNote extends Component {
                                     </TouchableOpacity>
                                 </View>
                                 <View style={StyleSheet.createNoteItem}>
-                                    <Reminder handleReminder={this.handleReminder}/>
+                                    <Reminder handleReminder={this.handleReminder} />
                                 </View>
                                 <View style={StyleSheet.createNoteItem}>
                                     <TouchableOpacity>
                                         <IconMaterial name="archive" size={26} color="black" />
                                     </TouchableOpacity>
                                 </View>
-
                             </View>
                         </View>
                         <View style={StyleSheet.createNoteInput}>
@@ -107,8 +112,8 @@ export default class CreateNote extends Component {
                                 {this.state.reminder.length > 1 &&
                                     <TouchableOpacity>
                                         <Chip>
-                                        <IconM name="clock-outline" size={20} color="black" />
-                                        {this.state.reminder}
+                                            <IconM name="clock-outline" size={20} color="black" />
+                                            {this.state.reminder}
                                         </Chip>
                                     </TouchableOpacity>}
                             </View>

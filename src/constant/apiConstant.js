@@ -1,7 +1,9 @@
-export const apiConstant = {
+export const userApiConstant = {
     signUp: "/user/userSignUp",
     login: "/user/login",
-    reset: "/user/reset",
+    reset: "/user/reset"
+}
+export const noteApiConstant = {
     addNote: "/notes/addNotes",
     getNotes: "/notes/getNotesList"
 }

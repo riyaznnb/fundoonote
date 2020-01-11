@@ -1,3 +1,9 @@
+/******************************************************************************************
+* @purpose : Register component for fundoonote application
+* @file : register.js
+* @author : Riyazuddin K
+* @since : 04-01-2020
+******************************************************************************************/
 import React, { Component } from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight, ScrollView } from 'react-native'
 import { Card } from 'react-native-elements'
@@ -62,8 +68,7 @@ export default class Register extends Component {
                                 placeholder="First_Name"
                                 underlineColorAndroid='transparent'
                                 value={this.state.firstName}
-                                onChangeText={(firstName) => this.setState({ firstName })}
-                            />
+                                onChangeText={(firstName) => this.setState({ firstName })} />
                         </View>
                         <View >
                             <TextInput
@@ -71,8 +76,7 @@ export default class Register extends Component {
                                 placeholder="Last_Name"
                                 underlineColorAndroid='transparent'
                                 value={this.state.lastName}
-                                onChangeText={(lastName) => this.setState({ lastName })}
-                            />
+                                onChangeText={(lastName) => this.setState({ lastName })} />
                         </View>
                         <View >
                             <TextInput
@@ -80,8 +84,7 @@ export default class Register extends Component {
                                 placeholder="Email"
                                 underlineColorAndroid='transparent'
                                 value={this.state.email}
-                                onChangeText={(email) => this.setState({ email })}
-                            />
+                                onChangeText={(email) => this.setState({ email })}/>
                         </View>
                         <View >
                             <TextInput
@@ -90,8 +93,7 @@ export default class Register extends Component {
                                 placeholder="Password"
                                 underlineColorAndroid='transparent'
                                 value={this.state.password}
-                                onChangeText={(password) => this.setState({ password })}
-                            />
+                                onChangeText={(password) => this.setState({ password })}/>
                         </View>
                         <View style={StyleSheet.registerButton}>
                             <Button title="Register" onPress={this.handleSubmit} />

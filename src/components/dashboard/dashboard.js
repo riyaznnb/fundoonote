@@ -1,3 +1,9 @@
+/******************************************************************************************
+* @purpose : Dashboard component for fundoonote application
+* @file : register.js
+* @author : Riyazuddin K
+* @since : 06-01-2020
+******************************************************************************************/
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native'
 import StyleSheet from '../../styleSheets'
@@ -12,7 +18,7 @@ export default class Dashboard extends Component {
         super(props);
         this.state = {
             gridView: true,
-            notes:[]
+            notes: []
         }
     }
     handleView = () => {
@@ -36,7 +42,7 @@ export default class Dashboard extends Component {
     render() {
         let viewStyle = this.state.gridView ?
             { noteArea: StyleSheet.noteAreaGrid, noteCard: StyleSheet.getNoteCard }
-            : { noteArea: StyleSheet.noteAreaList,noteCard:StyleSheet.getNoteCardList}
+            : { noteArea: StyleSheet.noteAreaList, noteCard: StyleSheet.getNoteCardList }
         let notes = this.state.notes.map(item => {
             return (
                 <GetNote
@@ -45,7 +51,7 @@ export default class Dashboard extends Component {
                     description={item.description}
                     isPined={item.isPined}
                     reminder={item.reminder}
-                    viewStyle={viewStyle.noteCard}/>
+                    viewStyle={viewStyle.noteCard} />
             )
         })
         return (
@@ -63,12 +69,6 @@ export default class Dashboard extends Component {
                                     <View style={StyleSheet.headerItem}>
                                         <Text style={StyleSheet.fundoonoteTitleInHeader}>
                                             <Text>Fundoo</Text>
-                                            {/* <Text style={StyleSheet.titleF}>f</Text>
-                                            <Text style={StyleSheet.titleU}>u</Text>
-                                            <Text style={StyleSheet.titleN}>n</Text>
-                                            <Text style={StyleSheet.titleD}>d</Text>
-                                            <Text style={StyleSheet.titleO}>o</Text>
-                                            <Text style={StyleSheet.titleO}>o</Text> */}
                                         </Text>
                                     </View>
                                 </View>

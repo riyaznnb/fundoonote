@@ -1,3 +1,9 @@
+/******************************************************************************************
+* @purpose : Forgot Password component for fundoonote application
+* @file : register.js
+* @author : Riyazuddin K
+* @since : 05-01-2020
+******************************************************************************************/
 import React, { Component } from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight,ScrollView} from 'react-native'
 import StyleSheet from '../styleSheets'
@@ -53,8 +59,7 @@ export default class ForgotPassword extends Component {
                         placeholder="Email"
                         underlineColorAndroid='transparent'
                         value={this.state.email}
-                        onChangeText={(email) => this.setState({ email })}
-                    />
+                        onChangeText={(email) => this.setState({ email })}/>
                 </View>
                 <View style={StyleSheet.registerButton}>
                     <Button title="Send Reset Email" onPress={this.handleForgotPassword}/>
