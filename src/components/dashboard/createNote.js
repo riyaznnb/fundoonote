@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/Feather'
 import Icons from 'react-native-vector-icons/AntDesign'
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconMaterial from 'react-native-vector-icons/MaterialIcons'
+import IconFont from 'react-native-vector-icons/FontAwesome5'
 import { addNote } from '../../services/userService';
 import Reminder from './reminder';
 import RBSheet from "react-native-raw-bottom-sheet";
@@ -125,7 +126,6 @@ export default class CreateNote extends Component {
                     ref={ref => {
                         this.RBSheet = ref;
                     }}
-                    height={300}
                     duration={250}
                     customStyles={{
                         container: {
@@ -133,42 +133,55 @@ export default class CreateNote extends Component {
                         }
                     }}>
                     <View style={StyleSheet.moreContainer}>
-                        <View style={StyleSheet.moreContainerIcon}>
-                            <View>
+                        <View style={StyleSheet.moreContainerIconText}>
+                            <View style={StyleSheet.moreContainerIcon}>
                             <TouchableOpacity>
-                                <Icon name="plus-square" size={26} color="black" />
+                                <IconMaterial name="delete" size={26} color="black" />
                                 </TouchableOpacity>
                             </View>
-                            <View>
+                            <View style={StyleSheet.moreContainerText}>
                             <Text>Delete</Text>
                             </View>
                         </View>
-                        <View style={StyleSheet.moreContainerIcon}>
+                        <View style={StyleSheet.moreContainerIconText}>
+                            <View style={StyleSheet.moreContainerIcon}>
                             <TouchableOpacity>
-                                <Icon name="plus-square" size={26} color="black" />
-                                <Text>Make a copy</Text>
-                            </TouchableOpacity>
+                                <IconMaterial name="content-copy" size={26} color="black" />
+                                </TouchableOpacity>
+                            </View>
+                            <View style={StyleSheet.moreContainerText}>
+                            <Text>Make a Copy</Text>
+                            </View>
                         </View>
-                        <View style={StyleSheet.moreContainerIcon}>
+                        <View style={StyleSheet.moreContainerIconText}>
+                            <View style={StyleSheet.moreContainerIcon}>
                             <TouchableOpacity>
-                                <Icon name="plus-square" size={26} color="black" />
-                                <Text>Send</Text>
-                            </TouchableOpacity>
+                                <IconMaterial name="share" size={26} color="black" />
+                                </TouchableOpacity>
+                            </View>
+                            <View style={StyleSheet.moreContainerText}>
+                            <Text>Send</Text>
+                            </View>
                         </View>
-                        <View style={StyleSheet.moreContainerIcon}>
+                        <View style={StyleSheet.moreContainerIconText}>
+                            <View style={StyleSheet.moreContainerIcon}>
                             <TouchableOpacity>
-                                <Icon name="plus-square" size={26} color="black" />
-                                <Text>Collaborator</Text>
-                            </TouchableOpacity>
+                                <IconFont name="user-plus" size={26} color="black" />
+                                </TouchableOpacity>
+                            </View>
+                            <View style={StyleSheet.moreContainerText}>
+                            <Text>Collaborator</Text>
+                            </View>
                         </View>
-                        <View style={StyleSheet.moreContainerIcon}>
+                        <View style={StyleSheet.moreContainerIconText}>
+                            <View style={StyleSheet.moreContainerIcon}>
                             <TouchableOpacity>
-                                <Icon name="plus-square" size={26} color="black" />
-                                <Text>Labels</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={StyleSheet.moreContainerIcon}>
-                            <Text>colors</Text>
+                                <IconMaterial name="label-outline" size={26} color="black" />
+                                </TouchableOpacity>
+                            </View>
+                            <View style={StyleSheet.moreContainerText}>
+                            <Text>Label</Text>
+                            </View>
                         </View>
                     </View>
                 </RBSheet>

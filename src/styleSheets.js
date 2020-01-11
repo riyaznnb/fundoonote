@@ -209,12 +209,16 @@ export default StyleSheet.create({
     //     justifyContent:"space-between"
     // }
     moreContainer: {
-        flexDirection: "column",
-        justifyContent:"space-between"
+        flexDirection: "column"
+    },
+    moreContainerIconText: {
+        flexDirection: "row",
+        marginLeft:"3%"
     },
     moreContainerIcon: {
-        flexDirection: "row",
-        flexWrap:"wrap",
-        alignSelf:"flex-start"
-    }
+        margin:"3%"
+    },
+    moreContainerText: {
+        margin:"3%"
+    },
 })
