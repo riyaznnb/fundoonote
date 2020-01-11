@@ -208,4 +208,13 @@ export default StyleSheet.create({
     //     flexDirection: "row",
     //     justifyContent:"space-between"
     // }
+    moreContainer: {
+        flexDirection: "column",
+        justifyContent:"space-between"
+    },
+    moreContainerIcon: {
+        flexDirection: "row",
+        flexWrap:"wrap",
+        alignSelf:"flex-start"
+    }
 })

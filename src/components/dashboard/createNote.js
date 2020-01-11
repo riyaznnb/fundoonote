@@ -5,7 +5,7 @@
 * @since : 08-01-2020
 ******************************************************************************************/
 import React, { Component } from 'react';
-import { View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import { View, TouchableOpacity, TextInput, ScrollView, Text } from 'react-native'
 import StyleSheet from '../../styleSheets'
 import { Chip } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather'
@@ -14,6 +14,7 @@ import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconMaterial from 'react-native-vector-icons/MaterialIcons'
 import { addNote } from '../../services/userService';
 import Reminder from './reminder';
+import RBSheet from "react-native-raw-bottom-sheet";
 export default class CreateNote extends Component {
     constructor(props) {
         super(props);
@@ -120,6 +121,57 @@ export default class CreateNote extends Component {
                         </View>
                     </View>
                 </ScrollView>
+                <RBSheet
+                    ref={ref => {
+                        this.RBSheet = ref;
+                    }}
+                    height={300}
+                    duration={250}
+                    customStyles={{
+                        container: {
+                            marginBottom: 50
+                        }
+                    }}>
+                    <View style={StyleSheet.moreContainer}>
+                        <View style={StyleSheet.moreContainerIcon}>
+                            <View>
+                            <TouchableOpacity>
+                                <Icon name="plus-square" size={26} color="black" />
+                                </TouchableOpacity>
+                            </View>
+                            <View>
+                            <Text>Delete</Text>
+                            </View>
+                        </View>
+                        <View style={StyleSheet.moreContainerIcon}>
+                            <TouchableOpacity>
+                                <Icon name="plus-square" size={26} color="black" />
+                                <Text>Make a copy</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={StyleSheet.moreContainerIcon}>
+                            <TouchableOpacity>
+                                <Icon name="plus-square" size={26} color="black" />
+                                <Text>Send</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={StyleSheet.moreContainerIcon}>
+                            <TouchableOpacity>
+                                <Icon name="plus-square" size={26} color="black" />
+                                <Text>Collaborator</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={StyleSheet.moreContainerIcon}>
+                            <TouchableOpacity>
+                                <Icon name="plus-square" size={26} color="black" />
+                                <Text>Labels</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={StyleSheet.moreContainerIcon}>
+                            <Text>colors</Text>
+                        </View>
+                    </View>
+                </RBSheet>
                 <View style={StyleSheet.createNoteFooter}>
                     <View style={StyleSheet.createNoteItem}>
                         <TouchableOpacity>
@@ -127,12 +179,16 @@ export default class CreateNote extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={StyleSheet.createNoteItem}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => {
+                            this.RBSheet.open();
+                        }}>
                             <Icon name="more-vertical" size={26} color="black" />
                         </TouchableOpacity>
                     </View>
                 </View>
+
             </View>
+
         )
     }
 }
