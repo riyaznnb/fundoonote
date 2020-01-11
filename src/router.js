@@ -48,9 +48,7 @@ const AppNavigator = createStackNavigator({
             header: null
             }  
     }
- },
- 
-    
+ }, 
     {
         initialRouteName: "dashboard",
     });

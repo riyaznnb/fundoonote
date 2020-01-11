@@ -97,7 +97,7 @@ export default class Reminder extends Component {
                                         selectedValue={this.state.date}
                                         onValueChange={(value) => { this.handleDatePicker(value) }}>
                                         {this.state.date != '' ?
-                                            <Picker.Item label="Select date"/>
+                                            <Picker.Item label="Select date" value={this.state.date}/>
                                             :
                                             <Picker.Item label="Select Date" />}
                                         <Picker.Item label="Today" value={today.toDateString()} />
@@ -120,7 +120,7 @@ export default class Reminder extends Component {
                             <Divider />
                             <View style={StyleSheet.reminderButton}>
                                 <View style={{ margin: 5 }}>
-                                    <Button title="Cancel" onPress={this.reminderDialogClose} style={{ color: "white" }} />
+                                    <Button title="Cancel" onPress={this.reminderDialogClose}  />
                                 </View>
                                 <View style={{ margin: 5 }}>
                                     <Button title="Save" onPress={this.reminderSave} />
