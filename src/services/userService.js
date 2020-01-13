@@ -1,4 +1,4 @@
-import axios from 'react-native-axios'
+import axios from 'axios'
 import Config from "react-native-config";
 import {userApiConstant,noteApiConstant} from "../constant/apiConstant"
 import { AsyncStorage } from 'react-native';

@@ -10,6 +10,7 @@ import { Card } from 'react-native-elements'
 import StyleSheet from '../../styleSheets';
 import { Chip } from 'react-native-paper';
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 export default class GetNote extends Component {
     constructor(props) {
         super(props);
@@ -18,9 +19,13 @@ export default class GetNote extends Component {
             description: ''
         }
     }
+    handleEdit = () => {
+        console.warn("hhwdjsjd")
+    }
     render() {
         return (
             <View style={this.props.viewStyle}>
+                <TouchableOpacity onPress={()=>this.handleEdit()}>
                 <Card containerStyle={{
                     flexDirection: "column",
                     justifyContent: "space-between",
@@ -40,7 +45,8 @@ export default class GetNote extends Component {
                                 {this.props.reminder}
                             </Chip>}
                     </View>
-                </Card>
+                    </Card>
+                    </TouchableOpacity>
             </View>
         )
     }
