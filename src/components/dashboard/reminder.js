@@ -5,9 +5,9 @@
 * @since : 10-01-2020
 ******************************************************************************************/
 import React, { Component } from "react";
-import { Button, View, Text, TouchableOpacity, Picker } from "react-native";
+import {  View, Text, TouchableOpacity, Picker } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
-import { Divider } from "react-native-elements";
+import { Divider,Button} from "react-native-elements";
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import StyleSheet from '../../styleSheets'
 import Dialog, { DialogContent } from "react-native-popup-dialog";
@@ -97,7 +97,7 @@ export default class Reminder extends Component {
                                         selectedValue={this.state.date}
                                         onValueChange={(value) => { this.handleDatePicker(value) }}>
                                         {this.state.date != '' ?
-                                            <Picker.Item label="Select date" value={this.state.date}/>
+                                            <Picker.Item label={this.state.date} value={this.state.date}/>
                                             :
                                             <Picker.Item label="Select Date" />}
                                         <Picker.Item label="Today" value={today.toDateString()} />
@@ -120,10 +120,13 @@ export default class Reminder extends Component {
                             <Divider />
                             <View style={StyleSheet.reminderButton}>
                                 <View style={{ margin: 5 }}>
-                                    <Button title="Cancel" onPress={this.reminderDialogClose}  />
+                                    <Button
+                                        type="clear"
+                                        title="Cancel"
+                                        onPress={this.reminderDialogClose} />
                                 </View>
                                 <View style={{ margin: 5 }}>
-                                    <Button title="Save" onPress={this.reminderSave} />
+                                    <Button title="Save" onPress={() => { this.reminderSave }} />
                                 </View>
                             </View>
                             <DateTimePicker

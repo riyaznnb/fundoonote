@@ -9,6 +9,7 @@ import { View, TextInput, Button, Text, TouchableHighlight, ScrollView, AsyncSto
 import StyleSheet from '../styleSheets'
 import { Card } from 'react-native-elements'
 import { userLogin } from '../services/userService'
+import Snackbar from 'react-native-snackbar';
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -23,25 +24,58 @@ export default class Login extends Component {
     handleForgotPasswordClick = () => {
         this.props.navigation.navigate('forgotPassword')
     }
+    snackbarClose = () => {
+        Snackbar.dismiss();
+    }
     handleLogin = () => {
-        const data = {
-            email: this.state.email,
-            password: this.state.password
+        if (this.state.email === '' || this.state.password === '') {
+            Snackbar.show({
+                title: 'Email and Password Required',
+                duration: Snackbar.LENGTH_LONG,
+                action: {
+                    title: 'Close',
+                    color: 'green',
+                    onPress: () => { this.snackbarClose },
+                },
+            });
         }
-        userLogin(data).then(res => {
-            console.warn('login success', res.data.id)
-            AsyncStorage.setItem("token", res.data.id)
-            this.props.navigation.navigate('dashboard')
-        })
-            .catch(error => {
-                console.warn('error', error.message);
+        else {
+            const data = {
+                email: this.state.email,
+                password: this.state.password
+            }
+            userLogin(data).then(res => {
+                console.warn('login success', res.data.id)
+                AsyncStorage.setItem("token", res.data.id)
+                Snackbar.show({
+                    title: 'Login Success',
+                    duration: Snackbar.LENGTH_LONG,
+                    action: {
+                        title: 'Close',
+                        color: 'green',
+                        onPress: () => { this.snackbarClose },
+                    },
+                });
+                this.props.navigation.navigate('dashboard')
             })
-
+                .catch(error => {
+                    Snackbar.show({
+                        title: "Invalid email and password",
+                        duration: Snackbar.LENGTH_LONG,
+                        action: {
+                            title: 'Close',
+                            color: 'green',
+                            onPress: () => { this.snackbarClose },
+                        },
+                    });
+                    console.warn('error', error.message);
+                })
+        }
     }
     render() {
         return (
             <ScrollView>
-                 <View style={StyleSheet.registerTitle}>
+                <View style={StyleSheet.registerTitle}>
                     <Text style={StyleSheet.fundoonoteTitle}>
                         <Text style={StyleSheet.titleF}>f</Text>
                         <Text style={StyleSheet.titleU}>u</Text>
@@ -56,17 +90,17 @@ export default class Login extends Component {
                     </Text>
                 </View>
                 <View style={StyleSheet.registerContainer}>
-                    <Card containerStyle={{borderRadius:10}}>
-                    <View style={StyleSheet.loginTitle}>
+                    <Card containerStyle={{ borderRadius: 10 }}>
+                        <View style={StyleSheet.loginTitle}>
                             <Text style={StyleSheet.loginTitleText}>Sign In</Text>
                         </View>
-                        <View style={{marginTop:"5%"}}>
+                        <View style={{ marginTop: "5%" }}>
                             <TextInput
                                 style={StyleSheet.registerContainerInput}
                                 placeholder="Email"
                                 underlineColorAndroid='transparent'
                                 value={this.state.email}
-                                onChangeText={(email) => this.setState({ email })}/>
+                                onChangeText={(email) => this.setState({ email })} />
                         </View>
                         <View >
                             <TextInput

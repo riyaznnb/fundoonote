@@ -9,7 +9,7 @@ import { View, TextInput, Button, Text, TouchableHighlight, ScrollView } from 'r
 import { Card } from 'react-native-elements'
 import StyleSheet from '../styleSheets'
 import { userRegister } from '../services/userService'
-
+import Snackbar from 'react-native-snackbar';
 export default class Register extends Component {
     constructor(props) {
         super(props);
@@ -25,23 +25,101 @@ export default class Register extends Component {
     }
     //function to handle submit button
     handleSubmit = () => {
-        const data = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email,
-            password: this.state.password,
-            service: "basic"
+        if (this.state.firstName === null || this.state.firstName.length < 3) {
+            Snackbar.show({
+                title: 'First Name should min 3 character',
+                duration: Snackbar.LENGTH_LONG,
+                action: {
+                    title: 'Close',
+                    color: 'green',
+                    onPress: () => { this.snackbarClose },
+                },
+            });
+          }
+          else if (this.state.lastName === null || this.state.lastName.length < 1) {
+            Snackbar.show({
+                title: 'Last Name should 1 character',
+                duration: Snackbar.LENGTH_LONG,
+                action: {
+                    title: 'Close',
+                    color: 'green',
+                    onPress: () => { this.snackbarClose },
+                },
+            });
+          }
+          else if (this.state.email === null || this.state.email.length < 1) {
+            Snackbar.show({
+                title: 'Email required',
+                duration: Snackbar.LENGTH_LONG,
+                action: {
+                    title: 'Close',
+                    color: 'green',
+                    onPress: () => { this.snackbarClose },
+                },
+            });
+          }
+          else if (this.state.password === null || this.state.password.length < 6) {
+            Snackbar.show({
+                title: 'Password should minimum 6 character',
+                duration: Snackbar.LENGTH_LONG,
+                action: {
+                    title: 'Close',
+                    color: 'green',
+                    onPress: () => { this.snackbarClose },
+                },
+            });
+          }
+          else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.email)) {
+            Snackbar.show({
+                title: 'Invalid Email address',
+                duration: Snackbar.LENGTH_LONG,
+                action: {
+                    title: 'Close',
+                    color: 'green',
+                    onPress: () => { this.snackbarClose },
+                },
+            });
         }
-        console.warn('register data', data)
-        userRegister(data).then(res => {
-            console.warn('success')
-            console.warn("result", res)
-            this.props.navigation.navigate('login')
-
-        })
-            .catch(error => {
-                console.warn("error", error.message)
+        else {
+            const data = {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                email: this.state.email,
+                password: this.state.password,
+                service: "basic"
+            }
+            console.warn('register data', data)
+            userRegister(data).then(res => {
+                console.warn('success')
+                console.warn("result", res)
+                Snackbar.show({
+                    title: 'Registration success',
+                    duration: Snackbar.LENGTH_LONG,
+                    action: {
+                        title: 'Close',
+                        color: 'green',
+                        onPress: () => { this.snackbarClose },
+                    },
+                });
+                this.props.navigation.navigate('login')
+    
             })
+                .catch(error => {
+                    Snackbar.show({
+                        title: error.message,
+                        duration: Snackbar.LENGTH_LONG,
+                        action: {
+                            title: 'Close',
+                            color: 'green',
+                            onPress: () => { this.snackbarClose },
+                        },
+                    });
+                    console.warn("error", error.message)
+                })
+        }
+    }
+    snackbarClose = () => {
+        Snackbar.dismiss();
     }
     render() {
         return (

@@ -8,7 +8,8 @@ import React, { Component } from 'react';
 import { View, TextInput, Button, Text, TouchableHighlight,ScrollView} from 'react-native'
 import StyleSheet from '../styleSheets'
 import { Card } from 'react-native-elements'
-import { userForgotPassword} from '../services/userService'
+import { userForgotPassword } from '../services/userService'
+import Snackbar from 'react-native-snackbar';
 export default class ForgotPassword extends Component {
     constructor(props) {
         super(props);
@@ -23,16 +24,47 @@ export default class ForgotPassword extends Component {
         this.props.navigation.navigate('login')
     }
     handleForgotPassword = () => {
-        const data={
-            email:this.state.email
+        if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.email)) {
+            Snackbar.show({
+                title: 'Invalid Email address',
+                duration: Snackbar.LENGTH_LONG,
+                action: {
+                    title: 'Close',
+                    color: 'green',
+                    onPress: () => { this.snackbarClose },
+                },
+            });
         }
-        userForgotPassword(data).then(res => {
-            console.warn('Email sent success',res)
-        })
-            .catch(error => {
-            console.warn('error',error.message);
-        })
-
+        else {
+            const data={
+                email:this.state.email
+            }
+            userForgotPassword(data).then(res => {
+                Snackbar.show({
+                    title: 'Reset mail sent your email',
+                    duration: Snackbar.LENGTH_LONG,
+                    action: {
+                        title: 'Close',
+                        color: 'green',
+                        onPress: () => { this.snackbarClose },
+                    },
+                });
+            })
+                .catch(error => {
+                    Snackbar.show({
+                        title: error.message,
+                        duration: Snackbar.LENGTH_LONG,
+                        action: {
+                            title: 'Close',
+                            color: 'green',
+                            onPress: () => { this.snackbarClose },
+                        },
+                    });
+            }) 
+        }  
+    }
+    snackbarClose = () => {
+        Snackbar.dismiss();
     }
     render() {
         return (
