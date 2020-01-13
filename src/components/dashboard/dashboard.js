@@ -51,6 +51,7 @@ export default class Dashboard extends Component {
                     description={item.description}
                     isPined={item.isPined}
                     reminder={item.reminder}
+                    color={item.color}
                     viewStyle={viewStyle.noteCard} />
             )
         })

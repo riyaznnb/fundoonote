@@ -21,7 +21,12 @@ export default class GetNote extends Component {
     render() {
         return (
             <View style={this.props.viewStyle}>
-                <Card containerStyle={StyleSheet.noteCard}>
+                <Card containerStyle={{
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    borderRadius: 20,
+                    backgroundColor:this.props.color
+                }}>
                     <View>
                         <Text>{this.props.title}</Text>
                     </View>

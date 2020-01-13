@@ -27,7 +27,7 @@ export default class CreateNote extends Component {
             title: '',
             description: '',
             reminder: '',
-            color:"rgb(255, 255, 255)"
+            color:"#FDFEFE"
         }
     }
     handlePinned = () => {
@@ -42,8 +42,8 @@ export default class CreateNote extends Component {
     handleReminder = reminder => {
         this.setState({ reminder: reminder })
     }
-    handleColor = color => {
-        this.setState({color:color})
+    handleColor = async(color) => {
+       await this.setState({color:color})
     }
     navigateDashboard = () => {
         if (this.state.title === '' && this.state.description === '') {
@@ -54,13 +54,16 @@ export default class CreateNote extends Component {
                 title: this.state.title,
                 description: this.state.description,
                 isPined: this.state.pinned,
-                reminder: this.state.reminder,
+                color:this.state.color,
+                reminder: this.state.reminder
+                
             }
             addNote(data).then(res => {
                 console.warn("addnote result", res)
                 this.props.navigation.navigate('dashboard')
             })
                 .catch(error => {
+                    console.log('error in addnote',error)
                     console.warn("error in addnote", error.message)
                 })
         }

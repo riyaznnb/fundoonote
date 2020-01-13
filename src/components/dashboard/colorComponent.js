@@ -3,52 +3,53 @@ import { View, FlatList, TouchableOpacity } from 'react-native';
 const colorPattern = [
     {    
         id:1,
-        colorCode: "rgb(255, 255, 255)"
+        colorCode: "#FDFEFE"
    },
     {
         id:2,
-       colorCode: "rgb(242, 139, 130)"
+       colorCode: "#F2D7D5"
    },
     {
         id:3,
-       colorCode: "rgb(215, 174, 251)"
+       colorCode: "#EBDEF0"
    },
     {
         id:4,
-       colorCode: "rgb(255, 192, 203)"
+       colorCode: "#7FB3D5"
    },
     {
        id:5,
-       colorCode: "rgb(167, 255, 235)"
+       colorCode: "#D0ECE7"
    },
     {
        id:6,
-       colorCode: "rgb(251, 188, 4)"
-   },
+       colorCode: "#58D68D"
+    },
     {
-       id:7,
-       colorCode: "rgb(174, 203, 250)"
-   },
+        id:7,
+        colorCode: "#F1C40F"
+    },
     {
-       id:8,
-       colorCode: "rgb(232, 234, 237)"
-   },
+        id:8,
+        colorCode: "#BFC9CA"
+    },
     {
-       id:9,
-       colorCode: "rgb(203, 240, 248)"
-   },
+        id:9,
+        colorCode: "#FEF9E7"
+    },
     {
-       id:10,
-       colorCode: "rgb(230, 201, 168)"
-   },
+        id:10,
+        colorCode: "#FBEEE6"
+    },
     {
-       id:11,
-       colorCode: "rgb(255, 255, 0)"
-   },
+        id:11,
+        colorCode: "#7D3C98"
+    },
     {
-       id:12,
-       colorCode: "rgb(204, 255, 144)"
-   }
+        id:12,
+        colorCode: "#5DADE2"
+    },
+
 ]
 export default class ColorComponent extends Component {
    constructor(props) {
