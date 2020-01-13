@@ -68,7 +68,6 @@ export default class CreateNote extends Component {
                 })
         }
     }
-
     render() {
         return (
             <View style={{flex:1,
