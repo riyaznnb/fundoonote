@@ -17,6 +17,7 @@ import { addNote } from '../../services/userService';
 import Reminder from './reminder';
 import RBSheet from "react-native-raw-bottom-sheet";
 import { Avatar } from 'react-native-elements';
+import ColorComponent from './colorComponent';
 export default class CreateNote extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +27,7 @@ export default class CreateNote extends Component {
             title: '',
             description: '',
             reminder: '',
-            notes: []
+            color:"rgb(255, 255, 255)"
         }
     }
     handlePinned = () => {
@@ -41,6 +42,9 @@ export default class CreateNote extends Component {
     handleReminder = reminder => {
         this.setState({ reminder: reminder })
     }
+    handleColor = color => {
+        this.setState({color:color})
+    }
     navigateDashboard = () => {
         if (this.state.title === '' && this.state.description === '') {
             this.props.navigation.navigate('dashboard')
@@ -50,7 +54,7 @@ export default class CreateNote extends Component {
                 title: this.state.title,
                 description: this.state.description,
                 isPined: this.state.pinned,
-                reminder: this.state.reminder
+                reminder: this.state.reminder,
             }
             addNote(data).then(res => {
                 console.warn("addnote result", res)
@@ -64,7 +68,10 @@ export default class CreateNote extends Component {
 
     render() {
         return (
-            <View style={StyleSheet.createNoteContainer}>
+            <View style={{flex:1,
+                flexDirection: "column",
+                justifyContent: "space-between",
+                backgroundColor:this.state.color}} >
                 <ScrollView>
                     <View style={StyleSheet.createNoteHeaderInput}>
                         <View style={StyleSheet.createNoteHeader}>
@@ -130,6 +137,7 @@ export default class CreateNote extends Component {
                     duration={250}
                     customStyles={{
                         container: {
+                            backgroundColor:this.state.color,
                             marginBottom: 50
                         }
                     }}>
@@ -137,7 +145,7 @@ export default class CreateNote extends Component {
                         <View style={StyleSheet.moreContainerIconText}>
                             <View style={StyleSheet.moreContainerIcon}>
                             <TouchableOpacity>
-                                <IconMaterial name="delete" size={26} color="black" />
+                                <IconMaterial name="delete" size={20} color="black" />
                                 </TouchableOpacity>
                             </View>
                             <View style={StyleSheet.moreContainerText}>
@@ -147,7 +155,7 @@ export default class CreateNote extends Component {
                         <View style={StyleSheet.moreContainerIconText}>
                             <View style={StyleSheet.moreContainerIcon}>
                             <TouchableOpacity>
-                                <IconMaterial name="content-copy" size={26} color="black" />
+                                <IconMaterial name="content-copy" size={20} color="black" />
                                 </TouchableOpacity>
                             </View>
                             <View style={StyleSheet.moreContainerText}>
@@ -157,7 +165,7 @@ export default class CreateNote extends Component {
                         <View style={StyleSheet.moreContainerIconText}>
                             <View style={StyleSheet.moreContainerIcon}>
                             <TouchableOpacity>
-                                <IconMaterial name="share" size={26} color="black" />
+                                <IconMaterial name="share" size={20} color="black" />
                                 </TouchableOpacity>
                             </View>
                             <View style={StyleSheet.moreContainerText}>
@@ -167,7 +175,7 @@ export default class CreateNote extends Component {
                         <View style={StyleSheet.moreContainerIconText}>
                             <View style={StyleSheet.moreContainerIcon}>
                             <TouchableOpacity>
-                                <IconFont name="user-plus" size={26} color="black" />
+                                <IconFont name="user-plus" size={20} color="black" />
                                 </TouchableOpacity>
                             </View>
                             <View style={StyleSheet.moreContainerText}>
@@ -177,16 +185,15 @@ export default class CreateNote extends Component {
                         <View style={StyleSheet.moreContainerIconText}>
                             <View style={StyleSheet.moreContainerIcon}>
                             <TouchableOpacity>
-                                <IconMaterial name="label-outline" size={26} color="black" />
+                                <IconMaterial name="label-outline" size={20} color="black" />
                                 </TouchableOpacity>
                             </View>
                             <View style={StyleSheet.moreContainerText}>
                             <Text>Label</Text>
                             </View>
                         </View>
-                        <View style={StyleSheet.moreContainerIconText}>
-                            <Avatar rounded containerStyle={{backgroundColor:"black"}}/>
-                        </View>
+                        <ColorComponent
+                            handleColor={this.handleColor}/>
                     </View>
                 </RBSheet>
                 <View style={StyleSheet.createNoteFooter}>
@@ -203,9 +210,7 @@ export default class CreateNote extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-
             </View>
-
         )
     }
 }

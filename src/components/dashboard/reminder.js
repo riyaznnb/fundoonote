@@ -97,7 +97,7 @@ export default class Reminder extends Component {
                                         selectedValue={this.state.date}
                                         onValueChange={(value) => { this.handleDatePicker(value) }}>
                                         {this.state.date != '' ?
-                                            <Picker.Item label={this.state.date} value={this.state.date}/>
+                                            <Picker.Item label="Date" value={this.state.date}/>
                                             :
                                             <Picker.Item label="Select Date" />}
                                         <Picker.Item label="Today" value={today.toDateString()} />
@@ -126,7 +126,7 @@ export default class Reminder extends Component {
                                         onPress={this.reminderDialogClose} />
                                 </View>
                                 <View style={{ margin: 5 }}>
-                                    <Button title="Save" onPress={() => { this.reminderSave }} />
+                                    <Button title="Save" onPress={ this.reminderSave} />
                                 </View>
                             </View>
                             <DateTimePicker

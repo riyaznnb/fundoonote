@@ -210,7 +210,7 @@ export default StyleSheet.create({
     //     justifyContent:"space-between"
     // }
     moreContainer: {
-        flexDirection: "column"
+        flexDirection: "column",
     },
     moreContainerIconText: {
         flexDirection: "row",
@@ -222,4 +222,8 @@ export default StyleSheet.create({
     moreContainerText: {
         margin:"3%"
     },
+    moreContainerColor: {
+        flexDirection: "row",
+        marginLeft: "3%"
+    }
 })

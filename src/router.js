@@ -4,14 +4,14 @@
 * @author : Riyazuddin K
 * @since : 03-01-2020
 ******************************************************************************************/
-import { createStackNavigator } from 'react-navigation-stack'
+import {createSwitchNavigator} from 'react-navigation'
 import Register from './components/registration'
 import Login from './components/login'
 import ForgotPassword from './components/forgotPassword';
 import Dashboard from './components/dashboard/dashboard'
 import CreateNote from './components/dashboard/createNote';
 import Reminder from './components/dashboard/reminder';
-const AppNavigator = createStackNavigator({
+const AppNavigator = createSwitchNavigator({
     register: {
         screen: Register,
         navigationOptions: {
@@ -50,6 +50,6 @@ const AppNavigator = createStackNavigator({
     }
  }, 
     {
-        initialRouteName: "dashboard",
+        initialRouteName: "login",
     });
 export default AppNavigator;
