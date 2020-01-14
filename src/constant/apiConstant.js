@@ -7,5 +7,6 @@ export const noteApiConstant = {
     addNote: "/notes/addNotes",
     getNotes: "/notes/getNotesList",
     updateNotes: "/notes/updateNotes",
-    trashNotes:"/notes/trashNotes"
+    trashNotes: "/notes/trashNotes",
+    changeColor:"/notes/changesColorNotes"
 }

@@ -42,3 +42,12 @@ export async function addNoteToTrash(data) {
         }
     })
 }
+export async function updateColor(data) {
+    console.warn("Data in color service", data);
+    let token = await AsyncStorage.getItem('token');
+    return axios.post(Config.REACT_API_URL + noteApiConstant.changeColor, data, {
+        headers: {
+            Authorization:token
+        }
+    })
+}

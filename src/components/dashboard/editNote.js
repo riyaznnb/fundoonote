@@ -13,7 +13,7 @@ import Icons from 'react-native-vector-icons/AntDesign'
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconMaterial from 'react-native-vector-icons/MaterialIcons'
 import IconFont from 'react-native-vector-icons/FontAwesome5'
-import { updateNote,addNoteToTrash } from '../../services/noteService';
+import { updateNote,addNoteToTrash,updateColor } from '../../services/noteService';
 import Reminder from './reminder';
 import RBSheet from "react-native-raw-bottom-sheet";
 import { Avatar } from 'react-native-elements';
@@ -53,19 +53,26 @@ export default class EditNote extends Component {
         this.setState({ reminder: reminder })
     }
     handleColor = async(color) => {
-       await this.setState({color:color})
+        await this.setState({ color: color })
+        const data = {
+            color: this.state.color,
+            noteIdList:[this.props.navigation.state.params.data.id]
+        }
+        updateColor(data).then(res => {
+            console.log("Update color result", res)
+            this.props.navigation.navigate('dashboard')
+        })
+            .catch(error => {
+                console.log('error in color update',error)
+                console.warn("error in color update", error.message)
+            })
     }
     navigateDashboard = () => {
-        console.log('dddddd', this.props.navigation.state.params.data.id)
-        let noteId = this.props.navigation.state.params.data.id;
-
         let data = {
-            color: this.state.color,
-            noteIdList:[noteId]
-           
+            noteId: this.props.navigation.state.params.data.id,
+            title: this.state.title,
+            description:this.state.description
         }
-        console.log('dddddd', data)
-        console.warn('color note data',data)
         updateNote(data).then(res => {
             console.log("Update result", res)
             this.props.navigation.navigate('dashboard')
