@@ -6,5 +6,6 @@ export const userApiConstant = {
 export const noteApiConstant = {
     addNote: "/notes/addNotes",
     getNotes: "/notes/getNotesList",
-    updateNotes:"/notes/updateNotes"
+    updateNotes: "/notes/updateNotes",
+    trashNotes:"/notes/trashNotes"
 }

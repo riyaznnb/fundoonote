@@ -20,13 +20,23 @@ export async function getNote() {
         headers: {
             Authorization:token
         }
-        
+
     })
 }
 export async function updateNote(data) {
     let token = await AsyncStorage.getItem('token');
-    console.log(token)
+    console.log('data update',data,+"token ",token)
     return axios.post(Config.REACT_API_URL + noteApiConstant.updateNotes,data, {
+        headers: {
+            Authorization:token
+        }
+    })
+}
+export async function addNoteToTrash(data) {
+    console.warn("Data trash", data);
+    let token = await AsyncStorage.getItem('token');
+    console.warn('token in trash',token)
+    return axios.post(Config.REACT_API_URL + noteApiConstant.trashNotes, data, {
         headers: {
             Authorization:token
         }

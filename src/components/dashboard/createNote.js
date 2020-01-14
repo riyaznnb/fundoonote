@@ -27,7 +27,8 @@ export default class CreateNote extends Component {
             title: '',
             description: '',
             reminder: '',
-            color:"#FDFEFE"
+            color: "#FDFEFE",
+            isArchived:false
         }
     }
     handlePinned = () => {
@@ -45,6 +46,10 @@ export default class CreateNote extends Component {
     handleColor = async(color) => {
        await this.setState({color:color})
     }
+    handleArchieve = async() => {
+        await this.setState({ isArchived: true })
+        this.navigateDashboard()
+    }
     navigateDashboard = () => {
         if (this.state.title === '' && this.state.description === '') {
             this.props.navigation.navigate('dashboard')
@@ -55,8 +60,8 @@ export default class CreateNote extends Component {
                 description: this.state.description,
                 isPined: this.state.pinned,
                 color:this.state.color,
-                reminder: this.state.reminder
-                
+                reminder: this.state.reminder,
+                isArchived:this.state.isArchived   
             }
             addNote(data).then(res => {
                 console.warn("addnote result", res)
@@ -98,7 +103,7 @@ export default class CreateNote extends Component {
                                     <Reminder handleReminder={this.handleReminder} />
                                 </View>
                                 <View style={StyleSheet.createNoteItem}>
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={this.handleArchieve}>
                                         <IconMaterial name="archive" size={26} color="black" />
                                     </TouchableOpacity>
                                 </View>

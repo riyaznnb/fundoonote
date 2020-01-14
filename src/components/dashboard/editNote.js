@@ -13,7 +13,7 @@ import Icons from 'react-native-vector-icons/AntDesign'
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconMaterial from 'react-native-vector-icons/MaterialIcons'
 import IconFont from 'react-native-vector-icons/FontAwesome5'
-import { updateNote } from '../../services/noteService';
+import { updateNote,addNoteToTrash } from '../../services/noteService';
 import Reminder from './reminder';
 import RBSheet from "react-native-raw-bottom-sheet";
 import { Avatar } from 'react-native-elements';
@@ -56,21 +56,37 @@ export default class EditNote extends Component {
        await this.setState({color:color})
     }
     navigateDashboard = () => {
-        const data = {
-            noteId:this.props.navigation.state.params.data.id,
-            title: this.state.title,
-            description: this.state.description,
-            isPined: this.state.pinned,
-            color:this.state.color,
-            reminder: this.state.reminder  
+        console.log('dddddd', this.props.navigation.state.params.data.id)
+        let noteId = this.props.navigation.state.params.data.id;
+
+        let data = {
+            color: this.state.color,
+            noteIdList:[noteId]
+           
         }
+        console.log('dddddd', data)
+        console.warn('color note data',data)
         updateNote(data).then(res => {
-            console.warn("Update result", res)
+            console.log("Update result", res)
             this.props.navigation.navigate('dashboard')
         })
             .catch(error => {
                 console.log('error in update',error)
                 console.warn("error in update", error.message)
+            })
+    }
+    handleTrash = () => {
+        const data = {
+            noteIdList: [this.props.navigation.state.params.data.id],
+            isDeleted:true
+        }
+        addNoteToTrash(data).then(res => {
+            console.log("Trash result", res)
+            this.props.navigation.navigate('dashboard')
+        })
+            .catch(error => {
+                console.warn('error in trash',error)
+                console.warn("error in trash", error.message)
             })
     }
     render() {
@@ -151,7 +167,7 @@ export default class EditNote extends Component {
                     <View style={StyleSheet.moreContainer}>
                         <View style={StyleSheet.moreContainerIconText}>
                             <View style={StyleSheet.moreContainerIcon}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.handleTrash}>
                                 <IconMaterial name="delete" size={20} color="black" />
                                 </TouchableOpacity>
                             </View>

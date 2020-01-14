@@ -32,6 +32,7 @@ export default class Dashboard extends Component {
     }
     getAllNotes = () => {
         getNote().then(res => {
+            console.log('getallnote',res)
             this.setState({ notes: res.data.data.data })
         })
             .catch(error => {
