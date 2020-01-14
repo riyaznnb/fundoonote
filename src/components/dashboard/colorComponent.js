@@ -66,8 +66,7 @@ export default class ColorComponent extends Component {
                <View style={{ backgroundColor: item.colorCode, marginLeft: 5, borderRadius: 25, borderColor: 'black', height: 30, width: 30 }}>
                </View>
            </TouchableOpacity>
-       )
-   }
+       ) }
    render() {
        return (
            <View >
