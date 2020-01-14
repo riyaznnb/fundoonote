@@ -1,8 +1,8 @@
 /******************************************************************************************
-* @purpose : Create a note component for fundoonote application
-* @file : createNote.js
+* @purpose : Edit a note component for fundoonote application
+* @file : editNote.js
 * @author : Riyazuddin K
-* @since : 08-01-2020
+* @since : 13-01-2020
 ******************************************************************************************/
 import React, { Component } from 'react';
 import { View, TouchableOpacity, TextInput, ScrollView, Text } from 'react-native'
@@ -13,12 +13,12 @@ import Icons from 'react-native-vector-icons/AntDesign'
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconMaterial from 'react-native-vector-icons/MaterialIcons'
 import IconFont from 'react-native-vector-icons/FontAwesome5'
-import { addNote } from '../../services/noteService';
+import { updateNote } from '../../services/noteService';
 import Reminder from './reminder';
 import RBSheet from "react-native-raw-bottom-sheet";
 import { Avatar } from 'react-native-elements';
 import ColorComponent from './colorComponent';
-export default class CreateNote extends Component {
+export default class EditNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,6 +29,16 @@ export default class CreateNote extends Component {
             reminder: '',
             color:"#FDFEFE"
         }
+    }
+    componentDidMount() {
+        console.log('ineditnote')
+        this.setState({
+            title: this.props.navigation.state.params.data.title,
+            description: this.props.navigation.state.params.data.description,
+            reminder: this.props.navigation.state.params.data.reminder,
+            color: this.props.navigation.state.params.data.color,
+            pinned:this.props.navigation.state.params.data.isPined
+        })
     }
     handlePinned = () => {
         this.setState({ pinned: !this.state.pinned })
@@ -46,27 +56,22 @@ export default class CreateNote extends Component {
        await this.setState({color:color})
     }
     navigateDashboard = () => {
-        if (this.state.title === '' && this.state.description === '') {
+        const data = {
+            noteId:this.props.navigation.state.params.data.id,
+            title: this.state.title,
+            description: this.state.description,
+            isPined: this.state.pinned,
+            color:this.state.color,
+            reminder: this.state.reminder  
+        }
+        updateNote(data).then(res => {
+            console.warn("Update result", res)
             this.props.navigation.navigate('dashboard')
-        }
-        else {
-            const data = {
-                title: this.state.title,
-                description: this.state.description,
-                isPined: this.state.pinned,
-                color:this.state.color,
-                reminder: this.state.reminder
-                
-            }
-            addNote(data).then(res => {
-                console.warn("addnote result", res)
-                this.props.navigation.navigate('dashboard')
+        })
+            .catch(error => {
+                console.log('error in update',error)
+                console.warn("error in update", error.message)
             })
-                .catch(error => {
-                    console.log('error in addnote',error)
-                    console.warn("error in addnote", error.message)
-                })
-        }
     }
     render() {
         return (

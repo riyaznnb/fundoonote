@@ -11,7 +11,7 @@ import { Card, Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Feather'
 import Icons from 'react-native-vector-icons/MaterialIcons'
 import GetNote from './getNote';
-import { getNote } from '../../services/userService';
+import { getNote } from '../../services/noteService';
 import { ScrollView } from 'react-native-gesture-handler';
 export default class Dashboard extends Component {
     constructor(props) {
@@ -47,11 +47,7 @@ export default class Dashboard extends Component {
             return (
                 <GetNote
                     key={item.id}
-                    title={item.title}
-                    description={item.description}
-                    isPined={item.isPined}
-                    reminder={item.reminder}
-                    color={item.color}
+                    data={item}
                     viewStyle={viewStyle.noteCard} />
             )
         })

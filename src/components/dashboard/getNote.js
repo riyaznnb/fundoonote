@@ -8,10 +8,11 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native'
 import { Card } from 'react-native-elements'
 import StyleSheet from '../../styleSheets';
+import {withNavigation} from 'react-navigation'
 import { Chip } from 'react-native-paper';
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-export default class GetNote extends Component {
+class GetNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,35 +20,39 @@ export default class GetNote extends Component {
             description: ''
         }
     }
-    handleEdit = () => {
-        console.warn("hhwdjsjd")
+    handleEdit = (data) => {
+        console.log("hhwdjsjd",data)
+        console.log("edit note")
+        this.props.navigation.navigate("editnote",{data:data})
     }
     render() {
         return (
             <View style={this.props.viewStyle}>
-                <TouchableOpacity onPress={()=>this.handleEdit()}>
+                
                 <Card containerStyle={{
                     flexDirection: "column",
                     justifyContent: "space-between",
                     borderRadius: 20,
-                    backgroundColor:this.props.color
+                    backgroundColor:this.props.data.color
                 }}>
+                    <TouchableOpacity>
                     <View>
-                        <Text>{this.props.title}</Text>
+                        <Text onPress={()=>this.handleEdit(this.props.data)}>{this.props.data.title}</Text>
                     </View>
                     <View>
-                        <Text>{this.props.description}</Text>
+                        <Text>{this.props.data.description}</Text>
                     </View>
                     <View >
-                        {this.props.reminder != '' &&
+                        {this.props.data.reminder != '' &&
                             <Chip >
                                 <IconM name="clock-outline" size={15} color="black" />
-                                {this.props.reminder}
+                                {this.props.data.reminder}
                             </Chip>}
-                    </View>
+                        </View>
+                        </TouchableOpacity>
                     </Card>
-                    </TouchableOpacity>
             </View>
         )
     }
 }
+export default withNavigation(GetNote)

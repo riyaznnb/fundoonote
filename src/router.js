@@ -11,6 +11,7 @@ import ForgotPassword from './components/forgotPassword';
 import Dashboard from './components/dashboard/dashboard'
 import CreateNote from './components/dashboard/createNote';
 import Reminder from './components/dashboard/reminder';
+import EditNote from './components/dashboard/editNote'
 const AppNavigator = createSwitchNavigator({
     register: {
         screen: Register,
@@ -44,6 +45,12 @@ const AppNavigator = createSwitchNavigator({
     },
     reminder: {
         screen: Reminder,
+        navigationOptions: {
+            header: null
+            }  
+    },
+    editnote: {
+        screen: EditNote,
         navigationOptions: {
             header: null
             }  
