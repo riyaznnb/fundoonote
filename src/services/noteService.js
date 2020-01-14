@@ -20,6 +20,7 @@ export async function getNote() {
         headers: {
             Authorization:token
         }
+        
     })
 }
 export async function updateNote(data) {
