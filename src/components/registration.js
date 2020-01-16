@@ -86,7 +86,7 @@ export default class Register extends Component {
                 lastName: this.state.lastName,
                 email: this.state.email,
                 password: this.state.password,
-                service: "basic"
+                service: "advance"
             }
             console.warn('register data', data)
             userRegister(data).then(res => {

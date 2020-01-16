@@ -13,7 +13,7 @@ import Icons from 'react-native-vector-icons/AntDesign'
 import IconM from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconMaterial from 'react-native-vector-icons/MaterialIcons'
 import IconFont from 'react-native-vector-icons/FontAwesome5'
-import { updateNote,addNoteToTrash,updateColor } from '../../services/noteService';
+import { updateNote,addNoteToTrash,updateColor,updateReminder, updateArchive,updatePinUnpin} from '../../services/noteService';
 import Reminder from './reminder';
 import RBSheet from "react-native-raw-bottom-sheet";
 import { Avatar } from 'react-native-elements';
@@ -22,12 +22,13 @@ export default class EditNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pinned: false,
+            isPined: false,
             reminderOpen: false,
             title: '',
             description: '',
             reminder: '',
-            color:"#FDFEFE"
+            color: "#FDFEFE",
+            isArchived:''
         }
     }
     componentDidMount() {
@@ -37,11 +38,24 @@ export default class EditNote extends Component {
             description: this.props.navigation.state.params.data.description,
             reminder: this.props.navigation.state.params.data.reminder,
             color: this.props.navigation.state.params.data.color,
-            pinned:this.props.navigation.state.params.data.isPined
+            isPined: this.props.navigation.state.params.data.isPined,
+            isArchived:this.props.navigation.state.params.data.isArchive
         })
     }
-    handlePinned = () => {
-        this.setState({ pinned: !this.state.pinned })
+    handlePinned = async() => {
+        await this.setState({ isPined: !this.state.isPined })
+        const data = {
+            noteIdList: [this.props.navigation.state.params.data.id],
+            isPined:this.state.isPined
+        }
+        updatePinUnpin(data).then(res => {
+            console.log("Pin result", res)
+            //this.props.navigation.navigate('dashboard')
+        })
+            .catch(error => {
+                console.warn('error in Pin',error)
+                console.warn("error in Pin", error.message)
+            })
     }
     reminderModalOpen = () => {
         this.setState({ reminderOpen: true })
@@ -49,18 +63,28 @@ export default class EditNote extends Component {
     reminderModalClose = () => {
         this.setState({ reminderOpen: false })
     }
-    handleReminder = reminder => {
-        this.setState({ reminder: reminder })
+    handleReminder = async(reminder) => {
+        await this.setState({ reminder: reminder })
+        const data = {
+            noteIdList:[this.props.navigation.state.params.data.id],
+            reminder: this.state.reminder
+        }
+        updateReminder(data).then(res => {
+            console.warn('update reminder',res);
+        })
+            .catch(error => {
+            console.warn('update reminder error',error)
+        })
     }
     handleColor = async(color) => {
         await this.setState({ color: color })
         const data = {
-            color: this.state.color,
-            noteIdList:[this.props.navigation.state.params.data.id]
+            noteIdList:[this.props.navigation.state.params.data.id],
+            color: this.state.color
         }
+        console.warn('data in js',data)
         updateColor(data).then(res => {
             console.log("Update color result", res)
-            this.props.navigation.navigate('dashboard')
         })
             .catch(error => {
                 console.log('error in color update',error)
@@ -96,6 +120,24 @@ export default class EditNote extends Component {
                 console.warn("error in trash", error.message)
             })
     }
+    handleArchive = async () => {
+        await this.setState({ isArchived: !this.state.isArchived })
+        const data = {
+            noteIdList: [this.props.navigation.state.params.data.id],
+            isArchived:this.state.isArchived
+        }
+        updateArchive(data).then(res => {
+            console.log("Archive result", res)
+            this.props.navigation.navigate('dashboard')
+        })
+            .catch(error => {
+                console.warn('error in archive',error)
+                console.warn("error in archive", error.message)
+            })
+    }
+    componentWillUnmount() {
+        this.RBSheet.close();
+    }
     render() {
         return (
             <View style={{flex:1,
@@ -115,7 +157,7 @@ export default class EditNote extends Component {
                             <View style={StyleSheet.createNoteHeaderRight}>
                                 <View style={StyleSheet.createNoteItem}>
                                     <TouchableOpacity onPress={this.handlePinned}>
-                                        {!this.state.pinned ?
+                                        {!this.state.isPined ?
                                             <Icons name="pushpino" size={26} color="black" />
                                             :
                                             <Icons name="pushpin" size={26} color="black" />
@@ -126,7 +168,7 @@ export default class EditNote extends Component {
                                     <Reminder handleReminder={this.handleReminder} />
                                 </View>
                                 <View style={StyleSheet.createNoteItem}>
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={this.handleArchive}>
                                         <IconMaterial name="archive" size={26} color="black" />
                                     </TouchableOpacity>
                                 </View>

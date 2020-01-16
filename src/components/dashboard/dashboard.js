@@ -39,6 +39,7 @@ export default class Dashboard extends Component {
         })
             .catch(error => {
                 console.warn('Getnote error', error.message);
+                console.log('getNote  error',error)
             })
     }
     userLogout = () => {
@@ -49,7 +50,7 @@ export default class Dashboard extends Component {
         })
             .catch(error => {
             console.warn('error logout',error.message);
-            console.warn('error logout',error)
+            console.log('error logout',error)
         })
     }
 
