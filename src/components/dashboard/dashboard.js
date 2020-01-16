@@ -5,14 +5,16 @@
 * @since : 06-01-2020
 ******************************************************************************************/
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, AsyncStorage } from 'react-native'
 import StyleSheet from '../../styleSheets'
-import { Card, Avatar } from 'react-native-elements'
+import { Card, Avatar,Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Feather'
 import Icons from 'react-native-vector-icons/MaterialIcons'
 import GetNote from './getNote';
 import { getNote } from '../../services/noteService';
+import { logoutUser } from '../../services/userService';
 import { ScrollView } from 'react-native-gesture-handler';
+import RBSheet from "react-native-raw-bottom-sheet";
 export default class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -32,12 +34,23 @@ export default class Dashboard extends Component {
     }
     getAllNotes = () => {
         getNote().then(res => {
-            console.log('getallnote',res)
+            console.log('getallnote', res)
             this.setState({ notes: res.data.data.data })
         })
             .catch(error => {
                 console.warn('Getnote error', error.message);
             })
+    }
+    userLogout = () => {
+        logoutUser().then(res => {
+            console.warn('logout result', res)
+            AsyncStorage.removeItem('fundootoken')
+            this.props.navigation.navigate('login')
+        })
+            .catch(error => {
+            console.warn('error logout',error.message);
+            console.warn('error logout',error)
+        })
     }
 
     render() {
@@ -84,7 +97,9 @@ export default class Dashboard extends Component {
                                         </View>
                                     }
                                     <View style={StyleSheet.headerItem}>
-                                        <TouchableOpacity>
+                                        <TouchableOpacity onPress={() => {
+                                            this.RBSheet.open();
+                                        }}>
                                             <Avatar size="small"
                                                 overlayContainerStyle={{
                                                     backgroundColor: "skyblue"
@@ -102,6 +117,20 @@ export default class Dashboard extends Component {
                         </View>
                     </View>
                 </ScrollView>
+                <RBSheet
+                    ref={ref => {
+                        this.RBSheet = ref;
+                    }}
+                    duration={250}
+                    customStyles={{
+                        container: {
+                            marginBottom: 50
+                        }
+                    }}>
+                    <View style={StyleSheet.logoutContainer}>
+                         <Button title="Logout" onPress={this.userLogout} />    
+                    </View>
+                </RBSheet>
                 <View style={StyleSheet.footer}>
                     <View style={StyleSheet.header}>
                         <View style={StyleSheet.headerLeft}>

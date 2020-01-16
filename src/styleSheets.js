@@ -225,5 +225,8 @@ export default StyleSheet.create({
     moreContainerColor: {
         flexDirection: "row",
         marginLeft: "3%"
+    },
+    logoutContainer: {
+        justifyContent:"center"
     }
 })

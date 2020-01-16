@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Config from "react-native-config";
-import {userApiConstant,noteApiConstant} from "../constant/apiConstant"
+import {userApiConstant} from "../constant/apiConstant"
 import { AsyncStorage } from 'react-native';
 
 export function userRegister(data) {
@@ -8,10 +8,16 @@ export function userRegister(data) {
     return axios.post(Config.REACT_API_URL + userApiConstant.signUp, data)
 }
 export function userLogin(data) {
+    
     console.warn("Data", data);
     return axios.post(Config.REACT_API_URL + userApiConstant.login, data)
 } 
 export function userForgotPassword(data) {
     console.warn("Data", data);
     return axios.post(Config.REACT_API_URL + userApiConstant.reset, data)
+}
+export async function logoutUser() {
+    let token = await AsyncStorage.getItem('fundootoken');
+    console.warn(token)
+    return axios.post(Config.REACT_API_URL + userApiConstant.logout+"?access_token="+token)
 }

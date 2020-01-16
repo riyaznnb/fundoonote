@@ -45,8 +45,8 @@ export default class Login extends Component {
                 password: this.state.password
             }
             userLogin(data).then(res => {
-                console.warn('login success', res.data.id)
-                AsyncStorage.setItem("token", res.data.id)
+                console.warn('login success',res.data.id)
+                AsyncStorage.setItem("fundootoken", res.data.id)
                 Snackbar.show({
                     title: 'Login Success',
                     duration: Snackbar.LENGTH_LONG,
