@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Config from "react-native-config";
-import {userApiConstant,noteApiConstant} from "../constant/apiConstant"
+import {noteApiConstant} from "../constant/noteApiConstant"
 import { AsyncStorage } from 'react-native';
 
 export async function addNote(data) {

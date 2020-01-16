@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Config from "react-native-config";
-import {userApiConstant} from "../constant/apiConstant"
+import {userApiConstant} from "../constant/userApiConstant"
 import { AsyncStorage } from 'react-native';
 
 export function userRegister(data) {
