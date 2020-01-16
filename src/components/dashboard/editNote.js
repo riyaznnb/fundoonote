@@ -210,9 +210,7 @@ export default class EditNote extends Component {
                     customStyles={{
                         container: {
                             backgroundColor:this.state.color,
-                            marginBottom: 50
-                        }
-                    }}>
+                            marginBottom: 50}}}>
                     <View style={StyleSheet.moreContainer}>
                         <View style={StyleSheet.moreContainerIconText}>
                             <View style={StyleSheet.moreContainerIcon}>
