@@ -5,7 +5,7 @@
 * @since : 06-01-2020
 ******************************************************************************************/
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, AsyncStorage } from 'react-native'
+import { View, Text, TouchableOpacity, AsyncStorage,WebView} from 'react-native'
 import StyleSheet from '../../styleSheets'
 import { Card, Avatar,Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Feather'
@@ -116,6 +116,10 @@ export default class Dashboard extends Component {
                         <View style={viewStyle.noteArea}>
                             {notes}
                         </View>
+                        <WebView
+        source={{uri: 'https://github.com/facebook/react-native'}}
+        style={{marginTop: 20}}
+      />
                     </View>
                 </ScrollView>
                 <RBSheet
