@@ -68,7 +68,7 @@ export default class CreateNote extends Component {
                 color:this.state.color,
                 reminder: this.state.reminder,
                 isArchived: this.state.isArchived,
-                collaborator:this.state
+                collaborator:this.state.collaborator
             }
             addNote(data).then(res => {
                 console.warn("addnote result", res)

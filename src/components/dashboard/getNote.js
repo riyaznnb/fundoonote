@@ -42,7 +42,7 @@ class GetNote extends Component {
                     <View>
                         <Text>{this.props.data.description}</Text>
                     </View>
-                    <View >
+                    <View style={StyleSheet.getNoteCardReminder}>
                         {this.props.data.reminder != '' &&
                             <Chip >
                                 <IconM name="clock-outline" size={15} color="black" />

@@ -170,8 +170,11 @@ export default StyleSheet.create({
         borderRadius: 20,   
     },
     getNoteCardList: {
-         borderRadius: 20,   
-     },
+        borderRadius: 20,   
+    },
+    getNoteCardReminder: {
+        marginTop:"3%"
+    },
     noteCard: {
         flexDirection: "column",
         justifyContent: "space-between",
