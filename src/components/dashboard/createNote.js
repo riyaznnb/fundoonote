@@ -67,7 +67,8 @@ export default class CreateNote extends Component {
                 isPined: this.state.pinned,
                 color:this.state.color,
                 reminder: this.state.reminder,
-                isArchived:this.state.isArchived   
+                isArchived: this.state.isArchived,
+                collaborator:this.state
             }
             addNote(data).then(res => {
                 console.warn("addnote result", res)
@@ -94,6 +95,18 @@ export default class CreateNote extends Component {
     }
 
     render() {
+        var collaborator;
+        if (this.state.collaborator.length > 0) {
+            collaborator = this.state.collaborator.map(item => {
+                return (
+                    <View>
+                        <TouchableOpacity onPress={this.handleCollaborator}>
+                            <IconFont name="user-circle" size={26} color="black" />
+                        </TouchableOpacity>
+                    </View>
+                )
+            })
+        }  
         return (
             !this.state.collaboratorShow?
             <View style={{flex:1,
@@ -154,6 +167,9 @@ export default class CreateNote extends Component {
                                             {this.state.reminder}
                                         </Chip>
                                     </TouchableOpacity>}
+                            </View>
+                            <View style={StyleSheet.createNoteCollaborator}>
+                                 {collaborator}   
                             </View>
                         </View>
                     </View>
@@ -240,7 +256,9 @@ export default class CreateNote extends Component {
                 </View>
                 </View>
                 :
-                <Collaborator saveCollaborator={this.saveCollaborator}/>
+                <Collaborator
+                    saveCollaborator={this.saveCollaborator}
+                    handleCollaborator={this.handleCollaborator} />
         )
     }
 }

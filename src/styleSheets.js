@@ -251,9 +251,14 @@ export default StyleSheet.create({
     },
     collaboratorTitleText: {
         fontFamily: "Times New Roman",
-        fontSize:20, 
+        fontSize: 20,
+        color:"#010101"
     },
-  
+    collaboratorSaveText: {
+        fontFamily: "Times New Roman",
+        fontSize: 20,
+        color:"#010101"
+    },
     collaborators: {
         flexDirection: "row",
         marginTop: "5%",
@@ -268,9 +273,15 @@ export default StyleSheet.create({
     },
     collaboratorEmailText: {
         fontSize: 20,
-        fontWeight:"300"
+        fontWeight: "400",
+        color:"#010101"
     },
     collaboratorTextInput: {
         marginLeft: "5%",
     },
+    createNoteCollaborator: {
+        marginLeft:"5%",
+        flexDirection: "row",
+        alignItems:"center"
+    }
 })
