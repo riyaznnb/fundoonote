@@ -5,7 +5,7 @@
 * @since : 06-01-2020
 ******************************************************************************************/
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, AsyncStorage,WebView} from 'react-native'
+import { View, Text, TouchableOpacity, AsyncStorage,ProgressBarAndroid} from 'react-native'
 import StyleSheet from '../../styleSheets'
 import { Card, Avatar,Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Feather'
@@ -66,6 +66,18 @@ export default class Dashboard extends Component {
                     viewStyle={viewStyle.noteCard} />
             )
         })
+        let notesProgress = this.state.notes.length > 0 ?
+            <View style={viewStyle.noteArea}>
+            {notes}
+            </View>
+            :
+            <ProgressBarAndroid  progress={0.5}
+            style={{
+                flex: 1,
+                padding: 10,
+                alignItems: "center",
+                justifyContent: "center"
+            }}/>
         return (
             <View style={StyleSheet.headerFooter}>
                 <ScrollView>
@@ -113,13 +125,7 @@ export default class Dashboard extends Component {
                                 </View>
                             </View>
                         </Card>
-                        <View style={viewStyle.noteArea}>
-                            {notes}
-                        </View>
-                        <WebView
-        source={{uri: 'https://github.com/facebook/react-native'}}
-        style={{marginTop: 20}}
-      />
+                        {notesProgress}
                     </View>
                 </ScrollView>
                 <RBSheet

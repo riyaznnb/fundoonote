@@ -16,7 +16,6 @@ import IconFont from 'react-native-vector-icons/FontAwesome5'
 import { updateNote,addNoteToTrash,updateColor,updateReminder, updateArchive,updatePinUnpin} from '../../services/noteService';
 import Reminder from './reminder';
 import RBSheet from "react-native-raw-bottom-sheet";
-import { Avatar } from 'react-native-elements';
 import ColorComponent from './colorComponent';
 export default class EditNote extends Component {
     constructor(props) {
@@ -138,6 +137,9 @@ export default class EditNote extends Component {
     componentWillUnmount() {
         this.RBSheet.close();
     }
+    handleCollaborator = () => {
+        this.props.navigation.navigate('collaborator')
+    }
     render() {
         return (
             <View style={{flex:1,
@@ -244,7 +246,7 @@ export default class EditNote extends Component {
                         </View>
                         <View style={StyleSheet.moreContainerIconText}>
                             <View style={StyleSheet.moreContainerIcon}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.handleCollaborator}>
                                 <IconFont name="user-plus" size={20} color="black" />
                                 </TouchableOpacity>
                             </View>

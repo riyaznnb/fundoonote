@@ -228,5 +228,50 @@ export default StyleSheet.create({
     },
     logoutContainer: {
         justifyContent:"center"
-    }
+    },
+    collaboratorContainer: {
+        flex: 1,
+        flexDirection:"column"   
+    },
+    collaboratorHeader: {
+        margin:"5%",
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    collaboratorIconTitle: {
+        flexDirection: "row", 
+    },
+    collaboratorIcon: {
+        
+    },
+    collaboratorTitle: {
+        marginLeft:"8%"
+    },
+    collaboratorTitleText: {
+        fontFamily: "Times New Roman",
+        fontSize:20, 
+    },
+    collaboratorSaveText: {
+        fontFamily: "Times New Roman",
+        fontSize:20, 
+    },
+    collaborators: {
+        flexDirection: "row",
+        marginTop: "5%",
+        minHeight: 50,
+        alignItems:"center"
+    },
+    collaboratorAvatar: {
+        marginLeft:"8%"
+    },
+    collaboratorEmail: {
+        marginLeft:"5%"
+    },
+    collaboratorEmailText: {
+        fontSize: 20,
+        fontWeight:"300"
+    },
+    collaboratorTextInput: {
+        marginLeft: "5%",
+    },
 })

@@ -21,3 +21,12 @@ export async function logoutUser() {
     console.warn(token)
     return axios.post(Config.REACT_API_URL + userApiConstant.logout+"?access_token="+token)
 }
+export async function getUser(data) {
+    console.warn('service data', data);
+    let token = await AsyncStorage.getItem('fundootoken');
+    return axios.get(Config.REACT_API_URL + userApiConstant.allUser+"?filter="+data,{
+        headers: {
+            Authorization:token
+        }
+    })
+}

@@ -73,6 +73,13 @@ export default class CreateNote extends Component {
                 })
         }
     }
+    componentWillUnmount() {
+        this.RBSheet.close();
+    }
+    handleCollaborator = () => {
+        this.props.navigation.navigate('collaborator')
+    }
+
     render() {
         return (
             <View style={{flex:1,
@@ -181,7 +188,7 @@ export default class CreateNote extends Component {
                         </View>
                         <View style={StyleSheet.moreContainerIconText}>
                             <View style={StyleSheet.moreContainerIcon}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.handleCollaborator}>
                                 <IconFont name="user-plus" size={20} color="black" />
                                 </TouchableOpacity>
                             </View>

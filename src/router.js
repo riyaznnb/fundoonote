@@ -12,6 +12,7 @@ import Dashboard from './components/dashboard/dashboard'
 import CreateNote from './components/dashboard/createNote';
 import Reminder from './components/dashboard/reminder';
 import EditNote from './components/dashboard/editNote'
+import Collaborator from './components/dashboard/collaborator';
 const AppNavigator = createSwitchNavigator({
     register: {
         screen: Register,
@@ -54,9 +55,15 @@ const AppNavigator = createSwitchNavigator({
         navigationOptions: {
             header: null
             }  
+    },
+    collaborator: {
+        screen: Collaborator,
+        navigationOptions: {
+            header: null
+            }  
     }
  }, 
     {
-        initialRouteName: "login",
+        initialRouteName: "collaborator"
     });
 export default AppNavigator;
