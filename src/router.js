@@ -64,6 +64,6 @@ const AppNavigator = createSwitchNavigator({
     }
  }, 
     {
-        initialRouteName: "collaborator"
+        initialRouteName: "dashboard"
     });
 export default AppNavigator;

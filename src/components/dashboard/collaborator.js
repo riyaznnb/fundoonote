@@ -12,6 +12,7 @@ import Icons from 'react-native-vector-icons/AntDesign'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Avatar } from 'react-native-elements';
 import { getUser } from '../../services/userService';
+import Snackbar from 'react-native-snackbar';
 export default class Collaborator extends Component {
     constructor(props) {
         super(props);
@@ -21,19 +22,36 @@ export default class Collaborator extends Component {
             email:''
         }
     }
+    snackbarClose = () => {
+        Snackbar.dismiss();
+    }
     handleCollaborator = () => {
-        console.warn('userrr')
         const data = {
-                "where": {
-                "email":this.state.email
+            where: {
+                email: this.state.email
             }
         }
-        console.warn('user data',data);
         getUser(data).then(res => {
-            console.log('return user data',res);
+            if (res.data.length > 0) {
+                this.props.saveCollaborator(res.data[0])
+            }
+            else
+            {
+                Snackbar.show({
+                    title: 'Email address not available',
+                    duration: Snackbar.LENGTH_LONG,
+                    action: {
+                        title: 'Close',
+                        color: 'green',
+                        onPress: () => { this.snackbarClose },
+                    },
+                });
+            }
         })
             .catch(error => {
-            console.log('return user data error',error)
+                console.log('return user data error', error)
+                console.warn(error);
+                
         })
     }
     componentDidMount() {
@@ -53,10 +71,15 @@ export default class Collaborator extends Component {
                             <Text style={StyleSheet.collaboratorTitleText}>Collaborators</Text>
                         </View>
                     </View>
-                    <View>
-                        <TouchableOpacity onPress={this.handleCollaborator}>
+                    <View style={StyleSheet.collaboratorButton}>
+                        {/* <TouchableOpacity onPress={this.handleCollaborator}>
                         <Text style={StyleSheet.collaboratorSaveText}>Save</Text>
-                        </TouchableOpacity> 
+                        </TouchableOpacity>  */}
+                        <Button
+                            style={{color:"black"}}
+                            type="clear"
+                            title="Save"
+                            onPress={this.handleCollaborator} />
                     </View>
                 </View>
                 <View style={StyleSheet.collaborators}>

@@ -18,6 +18,7 @@ import Reminder from './reminder';
 import RBSheet from "react-native-raw-bottom-sheet";
 import { Avatar } from 'react-native-elements';
 import ColorComponent from './colorComponent';
+import Collaborator from './collaborator';
 export default class CreateNote extends Component {
     constructor(props) {
         super(props);
@@ -28,8 +29,13 @@ export default class CreateNote extends Component {
             description: '',
             reminder: '',
             color: "#FDFEFE",
-            isArchived:false
+            isArchived: false,
+            collaboratorShow: false,
+            collaborator:[]
         }
+    }
+    componentDidMount() {
+        console.log('result in creettt',this.props.data)
     }
     handlePinned = () => {
         this.setState({ pinned: !this.state.pinned })
@@ -77,11 +83,19 @@ export default class CreateNote extends Component {
         this.RBSheet.close();
     }
     handleCollaborator = () => {
-        this.props.navigation.navigate('collaborator')
+        this.setState({collaboratorShow:!this.state.collaboratorShow})
+    }
+    saveCollaborator = async (data) => {
+        await this.setState({
+            collaborator: [...this.state.collaborator,
+            { "firstName": data.firstName, "lastName":data.lastName,"email":data.email,"userId":data.id}]
+        });
+        this.handleCollaborator();
     }
 
     render() {
         return (
+            !this.state.collaboratorShow?
             <View style={{flex:1,
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -224,7 +238,9 @@ export default class CreateNote extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </View>
+                </View>
+                :
+                <Collaborator saveCollaborator={this.saveCollaborator}/>
         )
     }
 }

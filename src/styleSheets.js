@@ -234,15 +234,17 @@ export default StyleSheet.create({
         flexDirection:"column"   
     },
     collaboratorHeader: {
-        margin:"5%",
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: "center",
+        marginTop: "5%",
+        marginLeft: "5%",
+        marginRight:"5%"
     },
     collaboratorIconTitle: {
         flexDirection: "row", 
     },
-    collaboratorIcon: {
-        
+    collaboratorButton: {
     },
     collaboratorTitle: {
         marginLeft:"8%"
@@ -251,10 +253,7 @@ export default StyleSheet.create({
         fontFamily: "Times New Roman",
         fontSize:20, 
     },
-    collaboratorSaveText: {
-        fontFamily: "Times New Roman",
-        fontSize:20, 
-    },
+  
     collaborators: {
         flexDirection: "row",
         marginTop: "5%",

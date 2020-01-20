@@ -7,47 +7,47 @@ const colorPattern = [
    },
     {
         id:2,
-       colorCode: "#F2D7D5"
+       colorCode: "#E83A26"
    },
     {
         id:3,
-       colorCode: "#EBDEF0"
+       colorCode: "#E86126"
    },
     {
         id:4,
-       colorCode: "#7FB3D5"
+       colorCode: "#E88726"
    },
     {
        id:5,
-       colorCode: "#D0ECE7"
+       colorCode: "#E8B326"
    },
     {
        id:6,
-       colorCode: "#58D68D"
+       colorCode: "#E8E526"
     },
     {
         id:7,
-        colorCode: "#F1C40F"
+        colorCode: "#98E826"
     },
     {
         id:8,
-        colorCode: "#BFC9CA"
+        colorCode: "#34E826"
     },
     {
         id:9,
-        colorCode: "#FEF9E7"
+        colorCode: "#26E8CA"
     },
     {
         id:10,
-        colorCode: "#FBEEE6"
+        colorCode: "#1066EB"
     },
     {
         id:11,
-        colorCode: "#7D3C98"
+        colorCode: "#C610EB"
     },
     {
         id:12,
-        colorCode: "#5DADE2"
+        colorCode: "#EB10AC"
     },
 
 ]

@@ -24,7 +24,7 @@ export async function logoutUser() {
 export async function getUser(data) {
     console.warn('service data', data);
     let token = await AsyncStorage.getItem('fundootoken');
-    return axios.get(Config.REACT_API_URL + userApiConstant.allUser+"?filter="+data,{
+    return axios.get(Config.REACT_API_URL + userApiConstant.allUser+"?filter="+JSON.stringify(data),{
         headers: {
             Authorization:token
         }
