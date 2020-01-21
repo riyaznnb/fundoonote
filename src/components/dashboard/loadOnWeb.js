@@ -43,8 +43,7 @@ export default class LoadOnWeb extends Component {
                     <WebView
                         source={{uri: 'http://fundoonotes.incubation.bridgelabz.com'}}/>
                     </View>
-                </ScrollView>
-                
+                </ScrollView> 
         </View>
             
         )
