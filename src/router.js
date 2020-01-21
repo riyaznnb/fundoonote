@@ -13,6 +13,7 @@ import CreateNote from './components/dashboard/createNote';
 import Reminder from './components/dashboard/reminder';
 import EditNote from './components/dashboard/editNote'
 import Collaborator from './components/dashboard/collaborator';
+import LoadOnWeb from './components/dashboard/loadOnWeb';
 const AppNavigator = createSwitchNavigator({
     register: {
         screen: Register,
@@ -61,9 +62,15 @@ const AppNavigator = createSwitchNavigator({
         navigationOptions: {
             header: null
             }  
+    },
+    loadOnWeb: {
+        screen:LoadOnWeb,
+        navigationOptions: {
+            header: null
+            }  
     }
  }, 
     {
-        initialRouteName: "dashboard"
+        initialRouteName: "loadOnWeb"
     });
 export default AppNavigator;

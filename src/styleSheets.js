@@ -107,6 +107,10 @@ export default StyleSheet.create({
         flexDirection: "column",
          justifyContent:"space-between"
     },
+    loadheaderFooter: {
+        flex:1,
+        flexDirection: "column",
+    },
     headerAndNotes: {
         flexDirection: "column",
     },
@@ -286,5 +290,14 @@ export default StyleSheet.create({
         marginLeft:"5%",
         flexDirection: "row",
         alignItems:"center"
+    },
+    progressBar:{
+        flex: 1,
+        padding: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#F7E24E",
+        marginTop:"50%"
+        
     }
 })

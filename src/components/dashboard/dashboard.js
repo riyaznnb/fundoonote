@@ -71,13 +71,7 @@ export default class Dashboard extends Component {
             {notes}
             </View>
             :
-            <ProgressBarAndroid  progress={0.5}
-            style={{
-                flex: 1,
-                padding: 10,
-                alignItems: "center",
-                justifyContent: "center"
-            }}/>
+            <ProgressBarAndroid  progress={0.5} style={StyleSheet.progressBar}/>
         return (
             <View style={StyleSheet.headerFooter}>
                 <ScrollView>
